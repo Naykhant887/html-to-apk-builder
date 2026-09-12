@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0, user-scalable=no">
+
+<title>Quick Build</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  color:#fff;
+  background:
+    radial-gradient(circle at top,#26324a 0%,#111827 45%,#070b12 100%);
+  padding:20px 14px 40px;
+}
+
+.container{
+  width:100%;
+  max-width:550px;
+  margin:auto;
+}
+
+.header{
+  text-align:center;
+  margin:10px 0 25px;
+}
+
+.header h1{
+  font-size:30px;
+  font-weight:800;
+}
+
+.header p{
+  margin-top:7px;
+  color:#9ca3af;
+  font-size:14px;
+}
+
+.card{
+  background:rgba(20,27,40,.92);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:15px;
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-size:14px;
+  font-weight:700;
+  color:#e5e7eb;
+}
+
+input,textarea{
+  width:100%;
+  border:none;
+  outline:none;
+  border-radius:12px;
+  background:#0b1220;
+  color:#fff;
+  padding:14px;
+  font-size:15px;
+  border:1px solid #273449;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#22c55e;
+}
+
+textarea{
+  min-height:180px;
+  resize:vertical;
+}
+
+.field{
+  margin-bottom:16px;
+}
+
+.source-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.source-btn{
+  padding:12px 5px;
+  border:1px solid #334155;
+  background:#111827;
+  color:#cbd5e1;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.source-btn.active{
+  background:#16a34a;
+  color:white;
+  border-color:#22c55e;
+}
+
+.file-btn{
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:14px;
+  background:#111827;
+  border:1px dashed #475569;
+  border-radius:12px;
+  color:#cbd5e1;
+  cursor:pointer;
+}
+
+.file-btn input{
+  display:none;
+}
+
+.preview{
+  display:none;
+  margin-top:12px;
+  text-align:center;
+}
+
+.preview img{
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  border-radius:18px;
+  border:2px solid #334155;
+}
+
+.splash-preview img{
+  width:140px;
+  height:100px;
+  border-radius:12px;
+}
+
+.build-btn{
+  width:100%;
+  border:none;
+  border-radius:14px;
+  padding:17px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  box-shadow:0 8px 25px rgba(34,197,94,.25);
+}
+
+.build-btn:active{
+  transform:scale(.98);
+}
+
+.status{
+  display:none;
+  margin-top:16px;
+  padding:14px;
+  border-radius:12px;
+  background:#0b1220;
+  border:1px solid #263449;
+}
+
+.status-text{
+  font-size:14px;
+  color:#d1d5db;
+}
+
+.progress{
+  height:8px;
+  margin-top:12px;
+  background:#1f2937;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  width:0%;
+  height:100%;
+  background:#22c55e;
+  transition:.3s;
+}
+
+.small{
+  margin-top:8px;
+  color:#64748b;
+  font-size:12px;
+}
+
+.hidden{
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>⚡ Quick Build</h1>
+    <p>HTML / CSS / JS → Android APK</p>
+  </div>
+
+  <div class="card">
+
+    <div class="field">
+      <label>App Name</label>
+      <input
+        id="appName"
+        type="text"
+        placeholder="My App"
+        value="My App">
+    </div>
+
+    <div class="field">
+      <label>Package Name</label>
+      <input
+        id="packageName"
+        type="text"
+        placeholder="com.example.myapp"
+        value="com.quickbuild.app">
+    </div>
+
+    <div class="field">
+
+      <label>Content Source</label>
+
+      <div class="source-buttons">
+        <button
+          class="source-btn active"
+          id="pasteBtn"
+          onclick="showSource('paste')">
+          Paste HTML
+        </button>
+
+        <button
+          class="source-btn"
+          id="fileBtn"
+          onclick="showSource('file')">
+          HTML File
+        </button>
+
+        <button
+          class="source-btn"
+          id="urlBtn"
+          onclick="showSource('url')">
+          URL
+        </button>
+      </div>
+
+      <div id="pasteSource">
+        <textarea
+          id="htmlCode"
+          placeholder="Paste your HTML code here..."></textarea>
+      </div>
+
+      <div id="fileSource" class="hidden">
+
+        <label class="file-btn">
+          📄 Select HTML File
+          <input
+            type="file"
+            id="htmlFile"
+            accept=".html,.htm">
+        </label>
+
+        <div class="small" id="fileName">
+          No file selected
+        </div>
+
+      </div>
+
+      <div id="urlSource" class="hidden">
+        <input
+          id="websiteUrl"
+          type="url"
+          placeholder="https://example.com">
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="field">
+      <label>App Icon</label>
+
+      <label class="file-btn">
+        🖼️ Select Icon
+        <input
+          type="file"
+          id="iconFile"
+          accept="image/png,image/jpeg,image/webp">
+      </label>
+
+      <div class="preview" id="iconPreview">
+        <img id="iconImage">
+      </div>
+
+    </div>
+
+    <div class="field">
+
+      <label>Splash Screen</label>
+
+      <label class="file-btn">
+        🌄 Select Splash Screen
+        <input
+          type="file"
+          id="splashFile"
+          accept="image/png,image/jpeg,image/webp">
+      </label>
+
+      <div class="preview splash-preview" id="splashPreview">
+        <img id="splashImage">
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <button
+      class="build-btn"
+      onclick="startBuild()">
+      🚀 Create & Build APK
+    </button>
+
+    <div class="status" id="status">
+
+      <div class="status-text" id="statusText">
+        Preparing build...
+      </div>
+
+      <div class="progress">
+        <div
+          class="progress-bar"
+          id="progressBar">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const appName = document.getElementById("appName");
+const packageName = document.getElementById("packageName");
+
+appName.addEventListener("input", () => {
+
+  let name = appName.value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g,".")
+    .replace(/^\.+|\.+$/g,"");
+
+  if(name){
+    packageName.value = "com.quickbuild." + name;
+  }
+
+});
+
+function showSource(type){
+
+  document.getElementById("pasteSource")
+    .classList.add("hidden");
+
+  document.getElementById("fileSource")
+    .classList.add("hidden");
+
+  document.getElementById("urlSource")
+    .classList.add("hidden");
+
+  document.querySelectorAll(".source-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  if(type === "paste"){
+
+    document.getElementById("pasteSource")
+      .classList.remove("hidden");
+
+    document.getElementById("pasteBtn")
+      .classList.add("active");
+
+  }
+
+  if(type === "file"){
+
+    document.getElementById("fileSource")
+      .classList.remove("hidden");
+
+    document.getElementById("fileBtn")
+      .classList.add("active");
+
+  }
+
+  if(type === "url"){
+
+    document.getElementById("urlSource")
+      .classList.remove("hidden");
+
+    document.getElementById("urlBtn")
+      .classList.add("active");
+
+  }
+
+}
+
+document.getElementById("htmlFile")
+.addEventListener("change", function(){
+
+  if(this.files.length){
+
+    document.getElementById("fileName")
+      .textContent = this.files[0].name;
+
+  }
+
+});
+
+function previewImage(input, previewId, imageId){
+
+  if(!input.files.length) return;
+
+  const file = input.files[0];
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    document.getElementById(imageId).src =
+      e.target.result;
+
+    document.getElementById(previewId)
+      .style.display = "block";
+
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+document.getElementById("iconFile")
+.addEventListener("change",function(){
+
+  previewImage(
+    this,
+    "iconPreview",
+    "iconImage"
+  );
+
+});
+
+document.getElementById("splashFile")
+.addEventListener("change",function(){
+
+  previewImage(
+    this,
+    "splashPreview",
+    "splashImage"
+  );
+
+});
+
+async function startBuild(){
+
+  const name = appName.value.trim();
+  const pkg = packageName.value.trim();
+
+  if(!name){
+
+    alert("Please enter App Name");
+    return;
+
+  }
+
+  if(!pkg){
+
+    alert("Please enter Package Name");
+    return;
+
+  }
+
+  const status = document.getElementById("status");
+  const text = document.getElementById("statusText");
+  const bar = document.getElementById("progressBar");
+
+  status.style.display = "block";
+  bar.style.width = "10%";
+  text.textContent = "Preparing APK build...";
+
+  try{
+
+    let html = "";
+
+    const pasteVisible =
+      !document.getElementById("pasteSource")
+      .classList.contains("hidden");
+
+    const fileVisible =
+      !document.getElementById("fileSource")
+      .classList.contains("hidden");
+
+    const urlVisible =
+      !document.getElementById("urlSource")
+      .classList.contains("hidden");
+
+    if(pasteVisible){
+
+      html =
+        document.getElementById("htmlCode").value;
+
+    }
+
+    if(fileVisible){
+
+      const file =
+        document.getElementById("htmlFile").files[0];
+
+      if(!file){
+
+        alert("Please select an HTML file");
+        return;
+
+      }
+
+      html = await file.text();
+
+    }
+
+    const url =
+      urlVisible
+      ? document.getElementById("websiteUrl").value.trim()
+      : "";
+
+    if(!html && !url){
+
+      alert("Please provide HTML or URL");
+      return;
+
+    }
+
+    bar.style.width = "25%";
+    text.textContent = "Sending project to build server...";
+
+    const data = {
+      appName: name,
+      packageName: pkg,
+      html: html,
+      css: "",
+      javascript: "",
+      url: url
+    };
+
+    const response = await fetch(
+      "/api/build",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+      }
+    );
+
+    if(!response.ok){
+
+      throw new Error(
+        "Build server returned " +
+        response.status
+      );
+
+    }
+
+    const result = await response.json();
+
+    bar.style.width = "50%";
+    text.textContent =
+      "APK build started...";
+
+    if(result.id){
+
+      await checkBuild(result.id);
+
+    }else{
+
+      bar.style.width = "100%";
+      text.textContent =
+        "Build request completed.";
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    bar.style.width = "0%";
+
+    text.textContent =
+      "Build failed: " + error.message;
+
+  }
+
+}
+
+async function checkBuild(id){
+
+  const text =
+    document.getElementById("statusText");
+
+  const bar =
+    document.getElementById("progressBar");
+
+  let attempts = 0;
+
+  const timer = setInterval(async () => {
+
+    attempts++;
+
+    try{
+
+      const response =
+        await fetch("/api/build/" + id);
+
+      const result =
+        await response.json();
+
+      if(result.status === "building"){
+
+        const progress =
+          Math.min(
+            50 + attempts * 5,
+            90
+          );
+
+        bar.style.width =
+          progress + "%";
+
+        text.textContent =
+          "Building Android APK...";
+
+      }
+
+      if(result.status === "completed"){
+
+        clearInterval(timer);
+
+        bar.style.width = "100%";
+
+        text.textContent =
+          "✅ APK Build Complete";
+
+        const link =
+          document.createElement("a");
+
+        link.href =
+          "/api/download/" + id;
+
+        link.textContent =
+          "⬇️ Download APK";
+
+        link.style.display = "block";
+        link.style.marginTop = "14px";
+        link.style.textAlign = "center";
+        link.style.padding = "13px";
+        link.style.borderRadius = "10px";
+        link.style.background = "#16a34a";
+        link.style.color = "#fff";
+        link.style.textDecoration = "none";
+        link.style.fontWeight = "bold";
+
+        document.getElementById("status")
+          .appendChild(link);
+
+      }
+
+      if(result.status === "failed"){
+
+        clearInterval(timer);
+
+        bar.style.width = "0%";
+
+        text.textContent =
+          "❌ APK Build Failed";
+
+      }
+
+    }catch(error){
+
+      if(attempts >= 20){
+
+        clearInterval(timer);
+
+        text.textContent =
+          "Unable to check build status.";
+
+      }
+
+    }
+
+  },3000);
+
+}
+
+</script>
+
+</body>
+  </html>
