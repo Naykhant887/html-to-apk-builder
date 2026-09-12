@@ -19,19 +19,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          
 
       - name: Install dependencies
         run: npm install
 
       - name: Check Capacitor
-        run: |
-          npx cap --version
+        run: npx cap --version
 
       - name: Check web files
         run: |
           test -f www/index.html
           echo "www/index.html found"
+
+      - name: Create Capacitor config
+        run: |
+          cat > capacitor.config.json <<'EOF'
+          {
+            "appId": "com.quickbuild.app",
+            "appName": "Quick Build",
+            "webDir": "www",
+            "bundledWebRuntime": false
+          }
+          EOF
+
+          echo "Capacitor config:"
+          cat capacitor.config.json
 
       - name: Add Android platform
         run: |
