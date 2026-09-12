@@ -40,6 +40,8 @@ jobs:
           </body>
           </html>
           EOF
+      - name: Initialize Capacitor
+        run: npx cap init "Quick Build" "com.quickbuild.app" --web-dir www
 
       - name: Add Android platform
         run: npx cap add android
