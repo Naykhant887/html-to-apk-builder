@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0,
-      maximum-scale=1.0, user-scalable=no">
+      maximum-scale=1.0,user-scalable=no">
 
 <title>Quick Build</title>
 
@@ -16,11 +16,11 @@
 }
 
 body{
-  font-family:Arial,sans-serif;
   min-height:100vh;
+  font-family:Arial,sans-serif;
   color:#fff;
   background:
-    radial-gradient(circle at top,#26324a 0%,#111827 45%,#070b12 100%);
+    radial-gradient(circle at top,#26324a 0%,#111827 38%,#070b12 100%);
   padding:20px 14px 40px;
 }
 
@@ -32,11 +32,11 @@ body{
 
 .header{
   text-align:center;
-  margin:10px 0 25px;
+  margin-bottom:25px;
 }
 
 .header h1{
-  font-size:30px;
+  font-size:32px;
   font-weight:800;
 }
 
@@ -48,64 +48,400 @@ body{
 
 .card{
   background:rgba(20,27,40,.92);
-  border:1px solid rgba(255,255,255,.08);
+  border:1px solid #303b50;
   border-radius:18px;
   padding:18px;
-  margin-bottom:15px;
-  box-shadow:0 15px 35px rgba(0,0,0,.25);
+  margin-bottom:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.3);
 }
 
 label{
   display:block;
-  margin-bottom:8px;
   font-size:14px;
   font-weight:700;
-  color:#e5e7eb;
+  margin-bottom:8px;
+  color:#dbe4f0;
 }
 
-input,textarea{
+input,
+textarea{
   width:100%;
-  border:none;
+  border:1px solid #3b475d;
   outline:none;
-  border-radius:12px;
-  background:#0b1220;
+  background:#0b111c;
   color:#fff;
-  padding:14px;
+  border-radius:12px;
+  padding:13px;
   font-size:15px;
-  border:1px solid #273449;
 }
 
 input:focus,
 textarea:focus{
-  border-color:#22c55e;
+  border-color:#4f9cff;
 }
 
 textarea{
-  min-height:180px;
+  min-height:170px;
   resize:vertical;
 }
 
 .field{
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 
-.source-buttons{
+.source-grid{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:8px;
-  margin-bottom:12px;
+  grid-template-columns:1fr;
+  gap:10px;
 }
 
 .source-btn{
-  padding:12px 5px;
-  border:1px solid #334155;
-  background:#111827;
-  color:#cbd5e1;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:700;
+  border:1px solid #3b475d;
+  background:#0b111c;
+  color:#dbe4f0;
+  padding:13px;
+  border-radius:12px;
+  text-align:left;
+  cursor:pointer;
 }
 
+.source-btn.active{
+  border-color:#4f9cff;
+  background:#16243a;
+}
+
+.file-box{
+  border:1px dashed #46546c;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+  color:#9ca3af;
+  cursor:pointer;
+}
+
+.file-box input{
+  display:none;
+}
+
+.preview{
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  border-radius:18px;
+  margin-top:12px;
+  display:none;
+  border:1px solid #44536b;
+}
+
+.build-btn{
+  width:100%;
+  border:0;
+  border-radius:14px;
+  padding:16px;
+  font-size:17px;
+  font-weight:800;
+  color:#fff;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  box-shadow:0 8px 25px rgba(37,99,235,.35);
+  cursor:pointer;
+}
+
+.build-btn:active{
+  transform:scale(.98);
+}
+
+.status{
+  display:none;
+  margin-top:15px;
+  padding:13px;
+  border-radius:12px;
+  background:#0b111c;
+  border:1px solid #303b50;
+  color:#b9c6d8;
+  font-size:14px;
+}
+
+.hidden{
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>⚡ Quick Build</h1>
+    <p>HTML / CSS / JS → Android APK</p>
+  </div>
+
+  <div class="card">
+
+    <div class="field">
+      <label>App Name</label>
+      <input
+        id="appName"
+        type="text"
+        placeholder="My App">
+    </div>
+
+    <div class="field">
+      <label>Package Name</label>
+      <input
+        id="packageName"
+        type="text"
+        placeholder="com.example.myapp">
+    </div>
+
+    <div class="field">
+      <label>Content Source</label>
+
+      <div class="source-grid">
+
+        <button
+          class="source-btn active"
+          id="pasteBtn"
+          onclick="selectSource('paste')">
+          📝 Paste HTML
+        </button>
+
+        <button
+          class="source-btn"
+          id="fileBtn"
+          onclick="selectSource('file')">
+          📄 Select HTML File
+        </button>
+
+        <button
+          class="source-btn"
+          id="urlBtn"
+          onclick="selectSource('url')">
+          🔗 Website URL
+        </button>
+
+      </div>
+    </div>
+
+    <div id="pasteArea" class="field">
+      <label>Paste HTML</label>
+
+      <textarea
+        id="htmlCode"
+        placeholder="Paste your HTML code here..."></textarea>
+    </div>
+
+    <div id="fileArea" class="field hidden">
+
+      <label>Select HTML File</label>
+
+      <label class="file-box">
+        📄 Choose HTML File
+        <input
+          id="htmlFile"
+          type="file"
+          accept=".html,.htm,text/html"
+          onchange="readHTMLFile(this)">
+      </label>
+
+    </div>
+
+    <div id="urlArea" class="field hidden">
+
+      <label>Website URL</label>
+
+      <input
+        id="websiteUrl"
+        type="url"
+        placeholder="https://example.com">
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="field">
+      <label>App Icon</label>
+
+      <label class="file-box">
+        🖼️ Select Icon
+        <input
+          id="iconFile"
+          type="file"
+          accept="image/*"
+          onchange="previewImage(this,'iconPreview')">
+
+        <img
+          id="iconPreview"
+          class="preview">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Splash Screen</label>
+
+      <label class="file-box">
+        🌅 Select Splash Screen
+        <input
+          id="splashFile"
+          type="file"
+          accept="image/*"
+          onchange="previewImage(this,'splashPreview')">
+
+        <img
+          id="splashPreview"
+          class="preview">
+      </label>
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <button
+      class="build-btn"
+      onclick="startBuild()">
+      🚀 Create & Build APK
+    </button>
+
+    <div
+      id="status"
+      class="status">
+      Preparing build...
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+let selectedSource = "paste";
+
+function selectSource(type){
+
+  selectedSource = type;
+
+  document
+    .querySelectorAll(".source-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  document
+    .getElementById(type + "Btn")
+    .classList.add("active");
+
+  document
+    .getElementById("pasteArea")
+    .classList.toggle("hidden",type !== "paste");
+
+  document
+    .getElementById("fileArea")
+    .classList.toggle("hidden",type !== "file");
+
+  document
+    .getElementById("urlArea")
+    .classList.toggle("hidden",type !== "url");
+}
+
+
+function readHTMLFile(input){
+
+  const file = input.files[0];
+
+  if(!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    document.getElementById("htmlCode").value =
+      e.target.result;
+
+    selectSource("paste");
+
+  };
+
+  reader.readAsText(file);
+}
+
+
+function previewImage(input,id){
+
+  const file = input.files[0];
+
+  if(!file) return;
+
+  const img = document.getElementById(id);
+
+  img.src = URL.createObjectURL(file);
+
+  img.style.display = "block";
+}
+
+
+function startBuild(){
+
+  const appName =
+    document.getElementById("appName").value.trim();
+
+  const packageName =
+    document.getElementById("packageName").value.trim();
+
+  const status =
+    document.getElementById("status");
+
+  if(!appName){
+
+    alert("Please enter App Name");
+
+    return;
+  }
+
+  if(!packageName){
+
+    alert("Please enter Package Name");
+
+    return;
+  }
+
+  if(selectedSource === "paste"){
+
+    const html =
+      document.getElementById("htmlCode").value.trim();
+
+    if(!html){
+
+      alert("Please paste HTML code");
+
+      return;
+    }
+  }
+
+  if(selectedSource === "url"){
+
+    const url =
+      document.getElementById("websiteUrl").value.trim();
+
+    if(!url){
+
+      alert("Please enter Website URL");
+
+      return;
+    }
+  }
+
+  status.style.display = "block";
+
+  status.innerHTML =
+    "⏳ Preparing APK build...";
+
+}
+
+</script>
+
+</body>
+</html>
 .source-btn.active{
   background:#16a34a;
   color:white;
