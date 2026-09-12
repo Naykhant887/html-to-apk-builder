@@ -17,31 +17,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          
+          node-version: 22
 
       - name: Install dependencies
         run: npm install
 
-      - name: Create web folder
+      - name: Check web files
         run: |
-          mkdir -p www
-          cat > www/index.html <<'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Quick Build</title>
-          </head>
-          <body>
-            <h1>Quick Build</h1>
-            <p>APK Builder is working.</p>
-          </body>
-          </html>
-          EOF
-      - name: Initialize Capacitor
-        run: npx cap init "Quick Build" "com.quickbuild.app" --web-dir www
+          test -f www/index.html
+          echo "www/index.html found"
 
       - name: Add Android platform
         run: npx cap add android
