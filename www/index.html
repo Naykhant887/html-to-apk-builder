@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-      maximum-scale=1.0,user-scalable=no">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
 <title>Quick Build</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
+html{
+  width:100%;
+  min-height:100%;
+}
+
 body{
+  width:100%;
   min-height:100vh;
-  font-family:Arial,sans-serif;
+  font-family:Arial, sans-serif;
   color:#fff;
+
   background:
-    radial-gradient(circle at top,#26324a 0%,#111827 38%,#070b12 100%);
+    radial-gradient(
+      circle at top,
+      #26324a 0%,
+      #111827 38%,
+      #070b12 100%
+    );
+
   padding:20px 14px 40px;
+}
+
+button,
+input,
+textarea{
+  font-family:inherit;
 }
 
 .container{
   width:100%;
   max-width:550px;
-  margin:auto;
+  margin:0 auto;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
   text-align:center;
@@ -38,6 +65,7 @@ body{
 .header h1{
   font-size:32px;
   font-weight:800;
+  letter-spacing:-.5px;
 }
 
 .header p{
@@ -46,648 +74,718 @@ body{
   font-size:14px;
 }
 
+/* =========================
+   CARD
+========================= */
+
 .card{
-  background:rgba(20,27,40,.92);
+  background:rgba(20,27,40,.94);
   border:1px solid #303b50;
   border-radius:18px;
   padding:18px;
   margin-bottom:16px;
-  box-shadow:0 12px 30px rgba(0,0,0,.3);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.30);
 }
 
-label{
-  display:block;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:8px;
-  color:#dbe4f0;
-}
-
-input,
-textarea{
-  width:100%;
-  border:1px solid #3b475d;
-  outline:none;
-  background:#0b111c;
-  color:#fff;
-  border-radius:12px;
-  padding:13px;
-  font-size:15px;
-}
-
-input:focus,
-textarea:focus{
-  border-color:#4f9cff;
-}
-
-textarea{
-  min-height:170px;
-  resize:vertical;
-}
+/* =========================
+   FIELD
+========================= */
 
 .field{
   margin-bottom:18px;
 }
 
-.source-grid{
+.field:last-child{
+  margin-bottom:0;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+
+  color:#dbe4f0;
+
+  font-size:14px;
+  font-weight:700;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+input,
+textarea{
+
+  width:100%;
+
+  border:1px solid #3b475d;
+  outline:none;
+
+  background:#0b111c;
+  color:#fff;
+
+  border-radius:12px;
+
+  padding:13px;
+
+  font-size:15px;
+
+  transition:.2s;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:#64748b;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#4f9cff;
+
+  box-shadow:
+    0 0 0 2px rgba(79,156,255,.10);
+}
+
+textarea{
+  min-height:190px;
+  resize:vertical;
+  line-height:1.5;
+}
+
+/* =========================
+   SOURCE BUTTONS
+========================= */
+
+.source-buttons{
+
   display:grid;
+
   grid-template-columns:1fr;
+
   gap:10px;
+
+  margin-bottom:12px;
 }
 
 .source-btn{
+
+  width:100%;
+
   border:1px solid #3b475d;
+
   background:#0b111c;
   color:#dbe4f0;
+
   padding:13px;
+
   border-radius:12px;
+
   text-align:left;
+
   cursor:pointer;
+
+  font-size:14px;
+
+  transition:.2s;
 }
 
-.source-btn.active{
-  border-color:#4f9cff;
-  background:#16243a;
-}
-
-.file-box{
-  border:1px dashed #46546c;
-  border-radius:12px;
-  padding:15px;
-  text-align:center;
-  color:#9ca3af;
-  cursor:pointer;
-}
-
-.file-box input{
-  display:none;
-}
-
-.preview{
-  width:80px;
-  height:80px;
-  object-fit:cover;
-  border-radius:18px;
-  margin-top:12px;
-  display:none;
-  border:1px solid #44536b;
-}
-
-.build-btn{
-  width:100%;
-  border:0;
-  border-radius:14px;
-  padding:16px;
-  font-size:17px;
-  font-weight:800;
-  color:#fff;
-  background:linear-gradient(135deg,#2563eb,#7c3aed);
-  box-shadow:0 8px 25px rgba(37,99,235,.35);
-  cursor:pointer;
-}
-
-.build-btn:active{
+.source-btn:active{
   transform:scale(.98);
 }
 
-.status{
-  display:none;
-  margin-top:15px;
-  padding:13px;
-  border-radius:12px;
-  background:#0b111c;
-  border:1px solid #303b50;
-  color:#b9c6d8;
-  font-size:14px;
-}
-
-.hidden{
-  display:none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <div class="header">
-    <h1>⚡ Quick Build</h1>
-    <p>HTML / CSS / JS → Android APK</p>
-  </div>
-
-  <div class="card">
-
-    <div class="field">
-      <label>App Name</label>
-      <input
-        id="appName"
-        type="text"
-        placeholder="My App">
-    </div>
-
-    <div class="field">
-      <label>Package Name</label>
-      <input
-        id="packageName"
-        type="text"
-        placeholder="com.example.myapp">
-    </div>
-
-    <div class="field">
-      <label>Content Source</label>
-
-      <div class="source-grid">
-
-        <button
-          class="source-btn active"
-          id="pasteBtn"
-          onclick="selectSource('paste')">
-          📝 Paste HTML
-        </button>
-
-        <button
-          class="source-btn"
-          id="fileBtn"
-          onclick="selectSource('file')">
-          📄 Select HTML File
-        </button>
-
-        <button
-          class="source-btn"
-          id="urlBtn"
-          onclick="selectSource('url')">
-          🔗 Website URL
-        </button>
-
-      </div>
-    </div>
-
-    <div id="pasteArea" class="field">
-      <label>Paste HTML</label>
-
-      <textarea
-        id="htmlCode"
-        placeholder="Paste your HTML code here..."></textarea>
-    </div>
-
-    <div id="fileArea" class="field hidden">
-
-      <label>Select HTML File</label>
-
-      <label class="file-box">
-        📄 Choose HTML File
-        <input
-          id="htmlFile"
-          type="file"
-          accept=".html,.htm,text/html"
-          onchange="readHTMLFile(this)">
-      </label>
-
-    </div>
-
-    <div id="urlArea" class="field hidden">
-
-      <label>Website URL</label>
-
-      <input
-        id="websiteUrl"
-        type="url"
-        placeholder="https://example.com">
-
-    </div>
-
-  </div>
-
-  <div class="card">
-
-    <div class="field">
-      <label>App Icon</label>
-
-      <label class="file-box">
-        🖼️ Select Icon
-        <input
-          id="iconFile"
-          type="file"
-          accept="image/*"
-          onchange="previewImage(this,'iconPreview')">
-
-        <img
-          id="iconPreview"
-          class="preview">
-      </label>
-    </div>
-
-    <div class="field">
-      <label>Splash Screen</label>
-
-      <label class="file-box">
-        🌅 Select Splash Screen
-        <input
-          id="splashFile"
-          type="file"
-          accept="image/*"
-          onchange="previewImage(this,'splashPreview')">
-
-        <img
-          id="splashPreview"
-          class="preview">
-      </label>
-    </div>
-
-  </div>
-
-  <div class="card">
-
-    <button
-      class="build-btn"
-      onclick="startBuild()">
-      🚀 Create & Build APK
-    </button>
-
-    <div
-      id="status"
-      class="status">
-      Preparing build...
-    </div>
-
-  </div>
-
-</div>
-
-<script>
-
-let selectedSource = "paste";
-
-function selectSource(type){
-
-  selectedSource = type;
-
-  document
-    .querySelectorAll(".source-btn")
-    .forEach(btn => btn.classList.remove("active"));
-
-  document
-    .getElementById(type + "Btn")
-    .classList.add("active");
-
-  document
-    .getElementById("pasteArea")
-    .classList.toggle("hidden",type !== "paste");
-
-  document
-    .getElementById("fileArea")
-    .classList.toggle("hidden",type !== "file");
-
-  document
-    .getElementById("urlArea")
-    .classList.toggle("hidden",type !== "url");
-}
-
-
-function readHTMLFile(input){
-
-  const file = input.files[0];
-
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    document.getElementById("htmlCode").value =
-      e.target.result;
-
-    selectSource("paste");
-
-  };
-
-  reader.readAsText(file);
-}
-
-
-function previewImage(input,id){
-
-  const file = input.files[0];
-
-  if(!file) return;
-
-  const img = document.getElementById(id);
-
-  img.src = URL.createObjectURL(file);
-
-  img.style.display = "block";
-}
-
-
-function startBuild(){
-
-  const appName =
-    document.getElementById("appName").value.trim();
-
-  const packageName =
-    document.getElementById("packageName").value.trim();
-
-  const status =
-    document.getElementById("status");
-
-  if(!appName){
-
-    alert("Please enter App Name");
-
-    return;
-  }
-
-  if(!packageName){
-
-    alert("Please enter Package Name");
-
-    return;
-  }
-
-  if(selectedSource === "paste"){
-
-    const html =
-      document.getElementById("htmlCode").value.trim();
-
-    if(!html){
-
-      alert("Please paste HTML code");
-
-      return;
-    }
-  }
-
-  if(selectedSource === "url"){
-
-    const url =
-      document.getElementById("websiteUrl").value.trim();
-
-    if(!url){
-
-      alert("Please enter Website URL");
-
-      return;
-    }
-  }
-
-  status.style.display = "block";
-
-  status.innerHTML =
-    "⏳ Preparing APK build...";
-
-}
-
-</script>
-
-</body>
-</html>
 .source-btn.active{
+
   background:#16a34a;
-  color:white;
+
+  color:#fff;
+
   border-color:#22c55e;
+
+  box-shadow:
+    0 5px 18px rgba(34,197,94,.18);
 }
+
+/* =========================
+   FILE BUTTON
+========================= */
 
 .file-btn{
+
   display:block;
+
   width:100%;
+
   text-align:center;
-  padding:14px;
+
+  padding:15px;
+
   background:#111827;
+
   border:1px dashed #475569;
+
   border-radius:12px;
+
   color:#cbd5e1;
+
   cursor:pointer;
+
+  transition:.2s;
+}
+
+.file-btn:active{
+  transform:scale(.98);
+}
+
+.file-btn:hover{
+  border-color:#64748b;
+  background:#162033;
 }
 
 .file-btn input{
   display:none;
 }
 
+/* =========================
+   PREVIEW
+========================= */
+
 .preview{
+
   display:none;
+
   margin-top:12px;
+
   text-align:center;
 }
 
 .preview img{
+
   width:80px;
   height:80px;
+
   object-fit:cover;
+
   border-radius:18px;
+
   border:2px solid #334155;
+
+  background:#0b111c;
 }
 
 .splash-preview img{
+
   width:140px;
   height:100px;
+
   border-radius:12px;
 }
 
+/* =========================
+   FILE NAME
+========================= */
+
+.small{
+
+  margin-top:8px;
+
+  color:#64748b;
+
+  font-size:12px;
+
+  text-align:center;
+
+  word-break:break-word;
+}
+
+/* =========================
+   BUILD BUTTON
+========================= */
+
 .build-btn{
+
   width:100%;
+
   border:none;
+
   border-radius:14px;
+
   padding:17px;
-  background:linear-gradient(135deg,#22c55e,#16a34a);
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    );
+
   color:#fff;
+
   font-size:17px;
+
   font-weight:800;
-  box-shadow:0 8px 25px rgba(34,197,94,.25);
+
+  box-shadow:
+    0 8px 25px rgba(37,99,235,.35);
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
 .build-btn:active{
   transform:scale(.98);
 }
 
+.build-btn:disabled{
+
+  opacity:.55;
+
+  cursor:not-allowed;
+
+  transform:none;
+}
+
+/* =========================
+   STATUS
+========================= */
+
 .status{
+
   display:none;
+
   margin-top:16px;
+
   padding:14px;
+
   border-radius:12px;
+
   background:#0b1220;
+
   border:1px solid #263449;
 }
 
 .status-text{
+
   font-size:14px;
+
   color:#d1d5db;
+
+  line-height:1.5;
+
+  word-break:break-word;
 }
 
+/* =========================
+   PROGRESS
+========================= */
+
 .progress{
+
   height:8px;
+
   margin-top:12px;
+
   background:#1f2937;
+
   border-radius:20px;
+
   overflow:hidden;
 }
 
 .progress-bar{
+
   width:0%;
+
   height:100%;
-  background:#22c55e;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22c55e,
+      #4ade80
+    );
+
   transition:.3s;
 }
 
-.small{
-  margin-top:8px;
-  color:#64748b;
-  font-size:12px;
+/* =========================
+   DOWNLOAD
+========================= */
+
+.download-btn{
+
+  display:block;
+
+  width:100%;
+
+  margin-top:14px;
+
+  padding:14px;
+
+  border-radius:10px;
+
+  background:#16a34a;
+
+  color:#fff;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  font-weight:bold;
+
+  box-shadow:
+    0 6px 18px rgba(22,163,74,.25);
+
+  transition:.2s;
 }
 
-.hidden{
-  display:none;
+.download-btn:active{
+  transform:scale(.98);
 }
+
+/* =========================
+   MESSAGE
+========================= */
+
+.error{
+  color:#f87171;
+}
+
+.success{
+  color:#4ade80;
+}
+
+.info{
+  color:#60a5fa;
+}
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden{
+  display:none !important;
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
+  <!-- =========================
+       HEADER
+  ========================== -->
+
   <div class="header">
+
     <h1>⚡ Quick Build</h1>
-    <p>HTML / CSS / JS → Android APK</p>
+
+    <p>
+      HTML / CSS / JS → Android APK
+    </p>
+
   </div>
+
+
+  <!-- =========================
+       APP INFORMATION
+  ========================== -->
 
   <div class="card">
 
+    <!-- APP NAME -->
+
     <div class="field">
-      <label>App Name</label>
+
+      <label>
+        App Name
+      </label>
+
       <input
         id="appName"
         type="text"
         placeholder="My App"
-        value="My App">
+        autocomplete="off"
+      >
+
     </div>
 
+
+    <!-- PACKAGE NAME -->
+
     <div class="field">
-      <label>Package Name</label>
+
+      <label>
+        Package Name
+      </label>
+
       <input
         id="packageName"
         type="text"
         placeholder="com.example.myapp"
-        value="com.quickbuild.app">
+        autocomplete="off"
+      >
+
     </div>
+
+
+    <!-- CONTENT SOURCE -->
 
     <div class="field">
 
-      <label>Content Source</label>
+      <label>
+        Content Source
+      </label>
+
 
       <div class="source-buttons">
+
         <button
+          type="button"
           class="source-btn active"
           id="pasteBtn"
-          onclick="showSource('paste')">
-          Paste HTML
+          onclick="showSource('paste')"
+        >
+          📝 Paste HTML
         </button>
 
+
         <button
+          type="button"
           class="source-btn"
           id="fileBtn"
-          onclick="showSource('file')">
-          HTML File
+          onclick="showSource('file')"
+        >
+          📄 Select HTML File
         </button>
+
 
         <button
+          type="button"
           class="source-btn"
           id="urlBtn"
-          onclick="showSource('url')">
-          URL
+          onclick="showSource('url')"
+        >
+          🔗 Website URL
         </button>
+
       </div>
+
+
+      <!-- =========================
+           PASTE HTML
+      ========================== -->
 
       <div id="pasteSource">
+
         <textarea
           id="htmlCode"
-          placeholder="Paste your HTML code here..."></textarea>
+          placeholder="Paste your complete HTML code here..."
+        ></textarea>
+
       </div>
 
-      <div id="fileSource" class="hidden">
+
+      <!-- =========================
+           HTML FILE
+      ========================== -->
+
+      <div
+        id="fileSource"
+        class="hidden"
+      >
 
         <label class="file-btn">
-          📄 Select HTML File
+
+          📄 Choose HTML File
+
           <input
             type="file"
             id="htmlFile"
-            accept=".html,.htm">
+            accept=".html,.htm,text/html"
+          >
+
         </label>
 
-        <div class="small" id="fileName">
+
+        <div
+          class="small"
+          id="fileName"
+        >
           No file selected
         </div>
 
       </div>
 
-      <div id="urlSource" class="hidden">
+
+      <!-- =========================
+           WEBSITE URL
+      ========================== -->
+
+      <div
+        id="urlSource"
+        class="hidden"
+      >
+
         <input
           id="websiteUrl"
           type="url"
-          placeholder="https://example.com">
+          placeholder="https://example.com"
+          autocomplete="off"
+        >
+
       </div>
 
     </div>
 
   </div>
+
+
+  <!-- =========================
+       ICON + SPLASH
+  ========================== -->
 
   <div class="card">
 
+
+    <!-- =========================
+         APP ICON
+    ========================== -->
+
     <div class="field">
-      <label>App Icon</label>
+
+      <label>
+        App Icon
+      </label>
+
 
       <label class="file-btn">
+
         🖼️ Select Icon
+
         <input
           type="file"
           id="iconFile"
-          accept="image/png,image/jpeg,image/webp">
+          accept="image/png,image/jpeg,image/webp"
+        >
+
       </label>
 
-      <div class="preview" id="iconPreview">
-        <img id="iconImage">
+
+      <div
+        class="preview"
+        id="iconPreview"
+      >
+
+        <img
+          id="iconImage"
+          alt="Icon Preview"
+        >
+
+      </div>
+
+
+      <div
+        class="small"
+        id="iconName"
+      >
+        No icon selected
       </div>
 
     </div>
 
+
+    <!-- =========================
+         SPLASH SCREEN
+    ========================== -->
+
     <div class="field">
 
-      <label>Splash Screen</label>
+      <label>
+        Splash Screen
+      </label>
+
 
       <label class="file-btn">
+
         🌄 Select Splash Screen
+
         <input
           type="file"
           id="splashFile"
-          accept="image/png,image/jpeg,image/webp">
+          accept="image/png,image/jpeg,image/webp"
+        >
+
       </label>
 
-      <div class="preview splash-preview" id="splashPreview">
-        <img id="splashImage">
+
+      <div
+        class="preview splash-preview"
+        id="splashPreview"
+      >
+
+        <img
+          id="splashImage"
+          alt="Splash Preview"
+        >
+
+      </div>
+
+
+      <div
+        class="small"
+        id="splashName"
+      >
+        No splash selected
       </div>
 
     </div>
 
   </div>
+
+
+  <!-- =========================
+       BUILD
+  ========================== -->
 
   <div class="card">
 
     <button
+      type="button"
       class="build-btn"
-      onclick="startBuild()">
+      id="buildButton"
+      onclick="startBuild()"
+    >
       🚀 Create & Build APK
     </button>
 
-    <div class="status" id="status">
 
-      <div class="status-text" id="statusText">
+    <div
+      class="status"
+      id="status"
+    >
+
+      <div
+        class="status-text"
+        id="statusText"
+      >
         Preparing build...
       </div>
 
+
       <div class="progress">
+
         <div
           class="progress-bar"
-          id="progressBar">
-        </div>
+          id="progressBar"
+        ></div>
+
       </div>
 
     </div>
@@ -696,367 +794,1064 @@ function startBuild(){
 
 </div>
 
+
 <script>
 
-const appName = document.getElementById("appName");
-const packageName = document.getElementById("packageName");
+/* =====================================================
+   GLOBAL
+===================================================== */
 
-appName.addEventListener("input", () => {
+let selectedSource = "paste";
 
-  let name = appName.value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g,".")
-    .replace(/^\.+|\.+$/g,"");
+let currentBuildId = null;
 
-  if(name){
-    packageName.value = "com.quickbuild." + name;
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const appNameInput =
+  document.getElementById("appName");
+
+const packageNameInput =
+  document.getElementById("packageName");
+
+const htmlCode =
+  document.getElementById("htmlCode");
+
+const websiteUrl =
+  document.getElementById("websiteUrl");
+
+const status =
+  document.getElementById("status");
+
+const statusText =
+  document.getElementById("statusText");
+
+const progressBar =
+  document.getElementById("progressBar");
+
+const buildButton =
+  document.getElementById("buildButton");
+
+
+/* =====================================================
+   AUTO PACKAGE NAME
+===================================================== */
+
+appNameInput.addEventListener(
+  "input",
+  function(){
+
+    const name =
+      appNameInput.value
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g,".")
+        .replace(/^\.+|\.+$/g,"");
+
+
+    if(name){
+
+      packageNameInput.value =
+        "com.quickbuild." + name;
+
+    }
+
   }
+);
 
-});
+
+/* =====================================================
+   SOURCE SWITCH
+===================================================== */
 
 function showSource(type){
 
-  document.getElementById("pasteSource")
+  selectedSource = type;
+
+
+  document
+    .getElementById("pasteSource")
     .classList.add("hidden");
 
-  document.getElementById("fileSource")
+  document
+    .getElementById("fileSource")
     .classList.add("hidden");
 
-  document.getElementById("urlSource")
+  document
+    .getElementById("urlSource")
     .classList.add("hidden");
 
-  document.querySelectorAll(".source-btn")
-    .forEach(btn => btn.classList.remove("active"));
+
+  document
+    .querySelectorAll(".source-btn")
+    .forEach(function(btn){
+
+      btn.classList.remove("active");
+
+    });
+
 
   if(type === "paste"){
 
-    document.getElementById("pasteSource")
+    document
+      .getElementById("pasteSource")
       .classList.remove("hidden");
 
-    document.getElementById("pasteBtn")
+    document
+      .getElementById("pasteBtn")
       .classList.add("active");
 
   }
+
 
   if(type === "file"){
 
-    document.getElementById("fileSource")
+    document
+      .getElementById("fileSource")
       .classList.remove("hidden");
 
-    document.getElementById("fileBtn")
+    document
+      .getElementById("fileBtn")
       .classList.add("active");
 
   }
 
+
   if(type === "url"){
 
-    document.getElementById("urlSource")
+    document
+      .getElementById("urlSource")
       .classList.remove("hidden");
 
-    document.getElementById("urlBtn")
+    document
+      .getElementById("urlBtn")
       .classList.add("active");
 
   }
 
 }
 
-document.getElementById("htmlFile")
-.addEventListener("change", function(){
 
-  if(this.files.length){
+/* =====================================================
+   HTML FILE
+===================================================== */
 
-    document.getElementById("fileName")
-      .textContent = this.files[0].name;
+document
+  .getElementById("htmlFile")
+  .addEventListener(
+    "change",
+    async function(){
 
+      const file =
+        this.files[0];
+
+      if(!file){
+        return;
+      }
+
+
+      document
+        .getElementById("fileName")
+        .textContent =
+          "Selected: " + file.name;
+
+
+      try{
+
+        const text =
+          await file.text();
+
+        htmlCode.value =
+          text;
+
+      }catch(error){
+
+        alert(
+          "Unable to read HTML file."
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+function previewImage(
+  input,
+  previewId,
+  imageId,
+  nameId
+){
+
+  const file =
+    input.files[0];
+
+  if(!file){
+    return;
   }
 
-});
 
-function previewImage(input, previewId, imageId){
+  const reader =
+    new FileReader();
 
-  if(!input.files.length) return;
 
-  const file = input.files[0];
+  reader.onload =
+    function(event){
 
-  const reader = new FileReader();
+      document
+        .getElementById(imageId)
+        .src =
+          event.target.result;
 
-  reader.onload = function(e){
 
-    document.getElementById(imageId).src =
-      e.target.result;
+      document
+        .getElementById(previewId)
+        .style.display =
+          "block";
 
-    document.getElementById(previewId)
-      .style.display = "block";
 
-  };
+      if(nameId){
+
+        document
+          .getElementById(nameId)
+          .textContent =
+            "Selected: " + file.name;
+
+      }
+
+    };
+
 
   reader.readAsDataURL(file);
 
 }
 
-document.getElementById("iconFile")
-.addEventListener("change",function(){
 
-  previewImage(
-    this,
-    "iconPreview",
-    "iconImage"
-  );
+/* =====================================================
+   ICON
+===================================================== */
 
-});
+document
+  .getElementById("iconFile")
+  .addEventListener(
+    "change",
+    function(){
 
-document.getElementById("splashFile")
-.addEventListener("change",function(){
-
-  previewImage(
-    this,
-    "splashPreview",
-    "splashImage"
-  );
-
-});
-
-async function startBuild(){
-
-  const name = appName.value.trim();
-  const pkg = packageName.value.trim();
-
-  if(!name){
-
-    alert("Please enter App Name");
-    return;
-
-  }
-
-  if(!pkg){
-
-    alert("Please enter Package Name");
-    return;
-
-  }
-
-  const status = document.getElementById("status");
-  const text = document.getElementById("statusText");
-  const bar = document.getElementById("progressBar");
-
-  status.style.display = "block";
-  bar.style.width = "10%";
-  text.textContent = "Preparing APK build...";
-
-  try{
-
-    let html = "";
-
-    const pasteVisible =
-      !document.getElementById("pasteSource")
-      .classList.contains("hidden");
-
-    const fileVisible =
-      !document.getElementById("fileSource")
-      .classList.contains("hidden");
-
-    const urlVisible =
-      !document.getElementById("urlSource")
-      .classList.contains("hidden");
-
-    if(pasteVisible){
-
-      html =
-        document.getElementById("htmlCode").value;
+      previewImage(
+        this,
+        "iconPreview",
+        "iconImage",
+        "iconName"
+      );
 
     }
+  );
 
-    if(fileVisible){
 
-      const file =
-        document.getElementById("htmlFile").files[0];
+/* =====================================================
+   SPLASH
+===================================================== */
+
+document
+  .getElementById("splashFile")
+  .addEventListener(
+    "change",
+    function(){
+
+      previewImage(
+        this,
+        "splashPreview",
+        "splashImage",
+        "splashName"
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   FILE → BASE64
+===================================================== */
+
+function fileToBase64(file){
+
+  return new Promise(
+    function(resolve,reject){
 
       if(!file){
 
-        alert("Please select an HTML file");
-        return;
+        resolve("");
 
+        return;
       }
 
-      html = await file.text();
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function(){
+
+          resolve(
+            reader.result
+          );
+
+        };
+
+
+      reader.onerror =
+        function(){
+
+          reject(
+            new Error(
+              "Unable to read image file."
+            )
+          );
+
+        };
+
+
+      reader.readAsDataURL(file);
 
     }
+  );
 
-    const url =
-      urlVisible
-      ? document.getElementById("websiteUrl").value.trim()
-      : "";
+}
 
-    if(!html && !url){
 
-      alert("Please provide HTML or URL");
+/* =====================================================
+   START BUILD
+===================================================== */
+
+async function startBuild(){
+
+  const name =
+    appNameInput.value.trim();
+
+  const pkg =
+    packageNameInput.value.trim();
+
+
+  /* =========================
+     VALIDATION
+  ========================== */
+
+  if(!name){
+
+    alert(
+      "Please enter App Name."
+    );
+
+    return;
+  }
+
+
+  if(!pkg){
+
+    alert(
+      "Please enter Package Name."
+    );
+
+    return;
+  }
+
+
+  /* =========================
+     PACKAGE VALIDATION
+  ========================== */
+
+  const packagePattern =
+    /^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/;
+
+
+  if(!packagePattern.test(pkg)){
+
+    alert(
+      "Invalid Package Name.\n\n" +
+      "Example:\n" +
+      "com.quickbuild.myapp"
+    );
+
+    return;
+  }
+
+
+  let html = "";
+
+  let url = "";
+
+
+  /* =========================
+     PASTE
+  ========================== */
+
+  if(selectedSource === "paste"){
+
+    html =
+      htmlCode.value.trim();
+
+
+    if(!html){
+
+      alert(
+        "Please paste HTML code."
+      );
+
       return;
-
     }
 
-    bar.style.width = "25%";
-    text.textContent = "Sending project to build server...";
+  }
+
+
+  /* =========================
+     HTML FILE
+  ========================== */
+
+  if(selectedSource === "file"){
+
+    const file =
+      document
+        .getElementById("htmlFile")
+        .files[0];
+
+
+    if(!file){
+
+      alert(
+        "Please select an HTML file."
+      );
+
+      return;
+    }
+
+
+    html =
+      await file.text();
+
+
+    if(!html.trim()){
+
+      alert(
+        "Selected HTML file is empty."
+      );
+
+      return;
+    }
+
+  }
+
+
+  /* =========================
+     URL
+  ========================== */
+
+  if(selectedSource === "url"){
+
+    url =
+      websiteUrl.value.trim();
+
+
+    if(!url){
+
+      alert(
+        "Please enter Website URL."
+      );
+
+      return;
+    }
+
+
+    if(
+      !url.startsWith("http://") &&
+      !url.startsWith("https://")
+    ){
+
+      alert(
+        "URL must start with http:// or https://"
+      );
+
+      return;
+    }
+
+  }
+
+
+  /* =========================
+     SHOW STATUS
+  ========================== */
+
+  status.style.display =
+    "block";
+
+
+  progressBar.style.width =
+    "5%";
+
+
+  statusText.innerHTML =
+    '<span class="info">⏳ Preparing APK build...</span>';
+
+
+  buildButton.disabled =
+    true;
+
+
+  /* Remove old download */
+
+  const oldDownload =
+    document.getElementById(
+      "downloadButton"
+    );
+
+
+  if(oldDownload){
+
+    oldDownload.remove();
+
+  }
+
+
+  try{
+
+
+    /* =========================
+       READ ICON
+    ========================== */
+
+    progressBar.style.width =
+      "10%";
+
+
+    statusText.textContent =
+      "🖼️ Preparing app icon...";
+
+
+    const iconFile =
+      document
+        .getElementById("iconFile")
+        .files[0];
+
+
+    const icon =
+      await fileToBase64(
+        iconFile
+      );
+
+
+    /* =========================
+       READ SPLASH
+    ========================== */
+
+    progressBar.style.width =
+      "15%";
+
+
+    statusText.textContent =
+      "🌄 Preparing splash screen...";
+
+
+    const splashFile =
+      document
+        .getElementById("splashFile")
+        .files[0];
+
+
+    const splash =
+      await fileToBase64(
+        splashFile
+      );
+
+
+    /* =========================
+       SEND BUILD REQUEST
+    ========================== */
+
+    progressBar.style.width =
+      "25%";
+
+
+    statusText.textContent =
+      "📤 Sending project to build server...";
+
 
     const data = {
-      appName: name,
-      packageName: pkg,
-      html: html,
-      css: "",
-      javascript: "",
-      url: url
+
+      appName:
+        name,
+
+      packageName:
+        pkg,
+
+      html:
+        html,
+
+      css:
+        "",
+
+      javascript:
+        "",
+
+      url:
+        url,
+
+      icon:
+        icon,
+
+      splash:
+        splash
+
     };
 
-    const response = await fetch(
-      "/api/build",
-      {
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify(data)
-      }
-    );
+
+    const response =
+      await fetch(
+        "/api/build",
+        {
+          method:
+            "POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify(data)
+        }
+      );
+
+
+    /* =========================
+       SERVER ERROR
+    ========================== */
 
     if(!response.ok){
 
+      let message =
+        "Build server returned HTTP " +
+        response.status;
+
+
+      try{
+
+        const errorData =
+          await response.json();
+
+
+        if(errorData.message){
+
+          message =
+            errorData.message;
+
+        }
+
+        else if(errorData.error){
+
+          message =
+            errorData.error;
+
+        }
+
+      }catch(e){}
+
+
       throw new Error(
-        "Build server returned " +
-        response.status
+        message
       );
 
     }
 
-    const result = await response.json();
 
-    bar.style.width = "50%";
-    text.textContent =
-      "APK build started...";
+    /* =========================
+       RESULT
+    ========================== */
 
-    if(result.id){
+    const result =
+      await response.json();
 
-      await checkBuild(result.id);
 
-    }else{
+    if(!result.id){
 
-      bar.style.width = "100%";
-      text.textContent =
-        "Build request completed.";
+      throw new Error(
+        "Build ID was not returned by server."
+      );
 
     }
 
+
+    currentBuildId =
+      result.id;
+
+
+    progressBar.style.width =
+      "40%";
+
+
+    statusText.textContent =
+      "🔨 Android APK build started...";
+
+
+    /* =========================
+       CHECK BUILD
+    ========================== */
+
+    await checkBuild(
+      result.id
+    );
+
+
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Build error:",
+      error
+    );
 
-    bar.style.width = "0%";
 
-    text.textContent =
-      "Build failed: " + error.message;
+    progressBar.style.width =
+      "0%";
+
+
+    statusText.innerHTML =
+      '<span class="error">' +
+      '❌ Build failed: ' +
+      escapeHtml(
+        error.message ||
+        "Unknown error"
+      ) +
+      '</span>';
+
+
+    buildButton.disabled =
+      false;
 
   }
 
 }
 
+
+/* =====================================================
+   CHECK BUILD STATUS
+===================================================== */
+
 async function checkBuild(id){
 
-  const text =
-    document.getElementById("statusText");
+  const maxAttempts =
+    120;
 
-  const bar =
-    document.getElementById("progressBar");
+  let attempts =
+    0;
 
-  let attempts = 0;
 
-  const timer = setInterval(async () => {
+  while(
+    attempts <
+    maxAttempts
+  ){
 
     attempts++;
+
 
     try{
 
       const response =
-        await fetch("/api/build/" + id);
+        await fetch(
+          "/api/build/" +
+          encodeURIComponent(id)
+        );
+
+
+      if(!response.ok){
+
+        throw new Error(
+          "Status check returned HTTP " +
+          response.status
+        );
+
+      }
+
 
       const result =
         await response.json();
 
-      if(result.status === "building"){
+
+      /* =========================
+         BUILDING
+      ========================== */
+
+      if(
+        result.status === "building" ||
+        result.status === "pending" ||
+        result.status === "queued"
+      ){
 
         const progress =
           Math.min(
-            50 + attempts * 5,
+            40 +
+            attempts * 2,
             90
           );
 
-        bar.style.width =
+
+        progressBar.style.width =
           progress + "%";
 
-        text.textContent =
-          "Building Android APK...";
+
+        statusText.textContent =
+          "🔨 Building Android APK... " +
+          progress +
+          "%";
 
       }
 
-      if(result.status === "completed"){
 
-        clearInterval(timer);
+      /* =========================
+         COMPLETED
+      ========================== */
 
-        bar.style.width = "100%";
+      if(
+        result.status === "completed" ||
+        result.status === "success"
+      ){
 
-        text.textContent =
-          "✅ APK Build Complete";
+        progressBar.style.width =
+          "100%";
 
-        const link =
-          document.createElement("a");
 
-        link.href =
-          "/api/download/" + id;
+        statusText.innerHTML =
+          '<span class="success">' +
+          '✅ APK Build Complete!' +
+          '</span>';
 
-        link.textContent =
-          "⬇️ Download APK";
 
-        link.style.display = "block";
-        link.style.marginTop = "14px";
-        link.style.textAlign = "center";
-        link.style.padding = "13px";
-        link.style.borderRadius = "10px";
-        link.style.background = "#16a34a";
-        link.style.color = "#fff";
-        link.style.textDecoration = "none";
-        link.style.fontWeight = "bold";
+        addDownloadButton(
+          id
+        );
 
-        document.getElementById("status")
-          .appendChild(link);
+
+        buildButton.disabled =
+          false;
+
+
+        return;
+
+      }
+
+
+      /* =========================
+         FAILED
+      ========================== */
+
+      if(
+        result.status === "failed" ||
+        result.status === "error"
+      ){
+
+        progressBar.style.width =
+          "0%";
+
+
+        let errorMessage =
+          "APK build failed.";
+
+
+        if(result.message){
+
+          errorMessage =
+            result.message;
+
+        }
+
+
+        if(result.error){
+
+          errorMessage =
+            result.error;
+
+        }
+
+
+        statusText.innerHTML =
+          '<span class="error">' +
+          '❌ APK Build Failed<br>' +
+          escapeHtml(
+            errorMessage
+          ) +
+          '</span>';
+
+
+        buildButton.disabled =
+          false;
+
+
+        return;
 
       }
 
-      if(result.status === "failed"){
-
-        clearInterval(timer);
-
-        bar.style.width = "0%";
-
-        text.textContent =
-          "❌ APK Build Failed";
-
-      }
 
     }catch(error){
 
-      if(attempts >= 20){
-
-        clearInterval(timer);
-
-        text.textContent =
-          "Unable to check build status.";
-
-      }
+      console.error(
+        "Status check error:",
+        error
+      );
 
     }
 
-  },3000);
+
+    /* =========================
+       WAIT 3 SECONDS
+    ========================== */
+
+    await sleep(
+      3000
+    );
+
+  }
+
+
+  /* =========================
+     TIMEOUT
+  ========================== */
+
+  progressBar.style.width =
+    "0%";
+
+
+  statusText.innerHTML =
+    '<span class="error">' +
+    '❌ Build timed out.<br>' +
+    'Please try again.' +
+    '</span>';
+
+
+  buildButton.disabled =
+    false;
+
+}
+
+
+/* =====================================================
+   DOWNLOAD BUTTON
+===================================================== */
+
+function addDownloadButton(id){
+
+  /* Remove old button */
+
+  const old =
+    document.getElementById(
+      "downloadButton"
+    );
+
+
+  if(old){
+
+    old.remove();
+
+  }
+
+
+  /* Create */
+
+  const link =
+    document.createElement(
+      "a"
+    );
+
+
+  link.id =
+    "downloadButton";
+
+
+  link.className =
+    "download-btn";
+
+
+  link.href =
+    "/api/download/" +
+    encodeURIComponent(id);
+
+
+  link.textContent =
+    "⬇️ Download APK";
+
+
+  link.setAttribute(
+    "download",
+    ""
+  );
+
+
+  status.appendChild(
+    link
+  );
+
+}
+
+
+/* =====================================================
+   SLEEP
+===================================================== */
+
+function sleep(ms){
+
+  return new Promise(
+    function(resolve){
+
+      setTimeout(
+        resolve,
+        ms
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(text){
+
+  return String(text)
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 </script>
 
 </body>
-  </html>
+      </html>
