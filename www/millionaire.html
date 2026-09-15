@@ -1,0 +1,4931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+
+  <title>Millionaire - Dubai</title>
+
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+  width: 100%;
+  height: 50px;
+
+  background: #3f719c;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 12px;
+}
+  
+
+.title {
+  color: #fff;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.title .new {
+  color: #08e4e8;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  width: 100%;
+  max-width: 720px;
+
+  margin: 0 auto;
+
+  padding:
+    clamp(30px, 7vw, 54px)
+    clamp(12px, 3vw, 17px)
+    70px;
+}
+
+
+/* =========================
+   BIG NUMBER
+========================= */
+
+.hero {
+  width: 100%;
+  text-align: center;
+}
+
+.number {
+  color: #3f719c;
+
+  /*
+    Responsive number
+    Small phone → ~120px
+    Large phone → ~156px
+    Tablet → max 180px
+  */
+  font-size: clamp(115px, 25vw, 180px);
+
+  line-height: .9;
+
+  font-weight: 700;
+
+  letter-spacing: clamp(-8px, -1.5vw, -12px);
+
+  margin: 0 0 clamp(25px, 6vw, 40px);
+}
+
+.updated {
+  color: #707070;
+
+  font-size: clamp(17px, 4.4vw, 32px);
+
+  line-height: 1.2;
+
+  margin-bottom: clamp(20px, 5vw, 26px);
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   TIME GRID
+========================= */
+
+.time-grid {
+  width: 100%;
+
+   margin-top: -30px;
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    clamp(10px, 2.5vw, 17px);
+}
+
+
+/* =========================
+   TIME CARD
+========================= */
+
+.time-card {
+  width: 100%;
+
+  /*
+    Responsive height
+  */
+  height: clamp(85px, 16vw, 115px);
+
+  padding: 0;
+
+  border: none;
+
+  border-radius:
+    clamp(10px, 2.5vw, 16px);
+
+  overflow: hidden;
+
+  background: #3f719c;
+
+  color: #fff;
+
+  box-shadow:
+    0 3px 7px rgba(0, 0, 0, .18);
+
+  cursor: pointer;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.time-card:active {
+  transform: translateY(2px);
+}
+
+
+/* Time title */
+
+.time-card strong {
+  display: block;
+
+  height: 48%;
+
+  padding-top:
+    clamp(11px, 2.5vw, 16px);
+
+  font-size:
+    clamp(22px, 5vw, 36px);
+
+  line-height: 1;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.25);
+}
+
+
+/* Result area */
+
+.result {
+  height: 52%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size:
+    clamp(24px, 4.5vw, 32px);
+
+  font-weight: 700;
+
+  color: #ffff00;
+}
+
+
+/* =========================
+   BOTTOM MENU
+========================= */
+
+.menu-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    clamp(10px, 2vw, 14px);
+
+  margin-top:
+    clamp(25px, 6vw, 36px);
+
+  padding:
+    0 clamp(2px, 1vw, 5px);
+}
+
+.menu-grid button {
+  width: 100%;
+
+  height:
+    clamp(65px, 13vw, 90px);
+
+  border: none;
+
+  border-radius:
+    clamp(10px, 2.5vw, 15px);
+
+  background: #fff;
+
+  color: #3f6687;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size:
+    clamp(16px, 3.7vw, 27px);
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 2px 7px rgba(0,0,0,.18);
+
+  cursor: pointer;
+}
+
+.menu-grid button:active {
+  transform: translateY(2px);
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+   320px - 360px
+========================= */
+
+@media (max-width: 360px) {
+
+  .topbar {
+    height: 64px;
+  }
+
+  .title {
+    font-size: 23px;
+  }
+
+  .container {
+    padding-top: 30px;
+  }
+
+  .number {
+    font-size: 115px;
+  }
+
+  .updated {
+    font-size: 16px;
+  }
+
+  .time-card {
+    height: 105px;
+  }
+
+  .time-card strong {
+    font-size: 21px;
+  }
+
+  .menu-grid button {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================
+   NORMAL PHONES
+   361px - 600px
+========================= */
+
+@media (min-width: 361px) and (max-width: 600px) {
+
+  .title {
+    font-size: 18px;
+  }
+
+  .number {
+    font-size: clamp(125px, 25vw, 156px);
+  }
+
+  .updated {
+    font-size: clamp(18px, 4.8vw, 30px);
+  }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 601px) {
+
+  .container {
+    max-width: 720px;
+  }
+
+  .time-card {
+    height: 140px;
+  }
+}
+
+
+/* =========================
+   LANDSCAPE PHONE
+========================= */
+
+@media (
+  max-height: 500px
+) and (
+  orientation: landscape
+) {
+
+  .topbar {
+    height: 60px;
+  }
+
+  .container {
+    padding-top: 20px;
+  }
+
+  .number {
+    font-size: 100px;
+    margin-bottom: 15px;
+  }
+
+  .updated {
+    margin-bottom: 15px;
+  }
+
+  .time-card {
+    height: 100px;
+  }
+
+  .menu-grid button {
+    height: 65px;
+  }
+}
+.number {
+  color: #3f719c;
+
+  font-size: clamp(115px, 25vw, 180px);
+  line-height: .9;
+  font-weight: 700;
+
+  letter-spacing: -9px;
+
+  opacity: 1;
+
+  transform: scale(1);
+
+  transition:
+    opacity 1.2s ease-in-out,
+    transform 1.2s ease-in-out;
+}
+
+.number.fade-out {
+  opacity: 0.08;
+
+  transform: scale(0.98);
+}
+/* =========================
+   DUBAI 3D - FINAL SIZE
+========================= */
+
+.history-page {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  background: #f1f1f1;
+}
+
+/* Dubai 3D Header */
+.history-header {
+  width: 100%;
+  height: 70px;
+
+  background: #3f719c;
+
+  display: flex;
+  align-items: center;
+
+  color: white;
+}
+
+.back-btn {
+  width: 65px;
+  height: 70px;
+
+  border: none;
+  background: transparent;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0;
+  position: relative;
+}
+
+.back-btn::before {
+  content: "";
+
+  width: 14px;
+  height: 14px;
+
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+
+  transform: rotate(45deg);
+
+  position: absolute;
+  left: 22px;
+  top: 20px;
+}
+
+.back-btn::after {
+  content: "";
+
+  width: 22px;
+  height: 2.5px;
+
+  background: #fff;
+
+  position: absolute;
+  left: 22px;
+  top: 27px;
+
+  border-radius: 2px;
+}
+
+.history-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+
+/* History List */
+.history-list {
+  width: 100%;
+  padding: 13px 13px 30px;
+}
+
+
+/* CARD */
+.history-card {
+  width: 100%;
+  height: 120px;
+
+  margin: 0 0 20px 0;
+
+  padding: 14px 20px;
+
+  background: #fff;
+
+  border-radius: 15px;
+
+  box-shadow: 0 2px 5px rgba(0,0,0,.15);
+
+  color: #3f6687;
+}
+
+
+/* Date / 3D */
+.history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 32px;
+
+  font-size: 22px;
+  font-weight: 600;
+}
+
+
+/* Date / Number */
+.history-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 55px;
+
+  margin-top: 25px;
+
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.history-bottom strong {
+  font-size: 35px;
+}
+
+
+/* PHONE */
+@media (max-width: 600px) {
+
+  .history-header {
+    height: 70px;
+  }
+
+  .back-btn {
+    width: 65px;
+    font-size: 40px;
+  }
+
+  .history-title {
+    font-size: 25px;
+  }
+
+  .history-list {
+    padding: 13px 13px 30px;
+  }
+
+  .history-card {
+    height: 120px;
+    margin-bottom: 20px;
+    padding: 14px 20px;
+  }
+
+  .history-top {
+    font-size: 20px;
+  }
+
+  .history-bottom {
+    font-size: 24px;
+  }
+
+  .history-bottom strong {
+    font-size: 28px;
+  }
+}
+
+
+/* SMALL PHONE */
+
+
+
+/* Small phone */
+
+@media (max-width: 390px) {
+
+  .history-title {
+    font-size: 22px;
+  }
+
+  .history-top,
+  .history-bottom {
+    font-size: 27px;
+  }
+
+  .history-bottom strong {
+    font-size: 27px;
+  }
+
+  .history-card {
+    min-height: 130px;
+  }
+}
+  .twoD-date {
+  width: fit-content;
+
+  margin: 50px auto;
+
+  padding: 8px 18px;
+
+  background: #3f719c;
+
+  color: #fff;
+
+  border-radius: 40px;
+
+  font-size: 21px;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+#twoDResults .time-grid {
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+#twoDResults .time-card {
+  height: 85px;
+}
+
+#twoDResults .time-card strong {
+  height: 50%;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+}
+
+#twoDResults .result {
+  height: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffff00;
+  font-size: 24px;
+  font-weight: 700;
+}
+/* Prevent text selection */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Prevent image dragging */
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* Prevent tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+html,
+body {
+  touch-action: manipulation;
+}
+/* =========================
+   SUNDAY DUBAI 3D
+========================= */
+
+.sunday-dubai-3d {
+  display: none;
+
+  width: 170px;
+  height: 105px;
+
+  margin: 0 auto 25px;
+
+  background: #3f719c;
+  color: #fff;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 3px 7px rgba(0,0,0,.18);
+
+  text-align: center;
+}
+
+.sunday-dubai-title {
+  height: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.25);
+}
+
+#sundayDubaiResult {
+  height: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffff00;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+/* =========================
+   MAIN NUMBER + DUBAI 3D
+========================= */
+
+.hero {
+  width: 100%;
+  min-height: 210px;
+
+  text-align: center;
+
+  position: relative;
+}
+
+
+/* Main Number ကို အလယ်မှာထား */
+
+.number {
+  font-size: clamp( 110px, 25vw, 160px);
+
+  line-height: .9;
+
+  font-weight: 700;
+
+  letter-spacing: -7px;
+
+  margin: 0;
+
+  padding-top: 10px;
+}
+
+
+/* Update */
+
+.updated {
+  font-size: clamp(14px, 3.8vw, 20px);
+
+  margin-top: 18px;
+
+  margin-bottom: 14px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   DUBAI 3D BOX
+   Main Number ရဲ့ ညာဘက်
+========================= */
+
+.sunday-dubai-3d {
+
+  position: absolute;
+
+  top: -15px;
+  right: 0;
+
+  width: 115px;
+  height: 75px;
+
+  background: #3f719c;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 3px 7px rgba(0,0,0,.18);
+
+  color: white;
+
+  z-index: 5;
+}
+
+
+/* Dubai 3D စာ */
+
+.sunday-dubai-title {
+
+  width: 100%;
+  height: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.25);
+}
+
+
+/* *** နေရာ */
+
+#sundayDubaiResult {
+
+  width: 100%;
+  height: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 25px;
+
+  font-weight: 700;
+
+  color: #ffff00;
+}
+
+
+/* =========================
+   2D CARDS - SMALL
+========================= */
+
+.container > .time-grid {
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px 12px;
+}
+
+
+.container > .time-grid .time-card {
+
+  width: 100%;
+
+  height: 80px;
+
+  border-radius: 11px;
+}
+
+
+/* Time */
+
+.container > .time-grid .time-card strong {
+
+  height: 48%;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+}
+
+
+/* Result */
+
+.container > .time-grid .result {
+
+  height: 52%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 21px;
+}
+
+
+
+
+
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media (max-width: 390px) {
+
+  .container {
+    padding: 15px 10px 45px;
+  }
+
+  .hero {
+    min-height: 195px;
+  }
+
+  .number {
+    font-size: 95px;
+  }
+
+  .updated {
+    font-size: 13px;
+    margin-top: 15px;
+  }
+
+  .sunday-dubai-3d {
+    width: 112px;
+    height: 74px;
+
+    top: -15px;
+    right: 0;
+  }
+
+  .sunday-dubai-title {
+    font-size: 16px;
+  }
+
+  #sundayDubaiResult {
+    font-size: 22px;
+  }
+
+  .container > .time-grid .time-card {
+    height: 98px;
+  }
+
+  .container > .time-grid .time-card strong {
+    font-size: 22px;
+  }
+
+  .container > .time-grid .result {
+    font-size: 23px;
+  }
+
+  .menu-grid button {
+    height: 60px;
+    font-size: 14px;
+  }
+}
+/* =========================
+   2D RESULTS HEADER - SMALL
+========================= */
+
+#twoDResults .history-header {
+  height: 55px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 !important;
+}
+
+#twoDResults .back-btn {
+  width: 60px !important;
+  height: 55px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  font-size: 0 !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+#twoDResults .history-title {
+  font-size: 25px !important;
+  font-weight: 700;
+
+  margin: -4px 0 0 0;
+  line-height: 1;
+}
+/* =========================
+   RANDOM NUMBER FADE ONLY
+========================= */
+
+.number.random-fade-out {
+  animation: randomFadeOut 0.5s ease forwards;
+}
+
+.number.random-fade-in {
+  animation: randomFadeIn 0.5s ease forwards;
+}
+
+@keyframes randomFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes randomFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+/* =========================
+   PRE-RESULT LOOP ANIMATION
+   :45 → Draw Time
+========================= */
+
+.number.pre-result-loop {
+  animation: preResultLoop 5s ease-in-out infinite;
+}
+
+@keyframes preResultLoop {
+
+  /* 0 → 2 sec : ပုံမှန်နေ */
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  /* 2 → 2.5 sec : 1st Fade Out */
+  50% {
+    opacity: 0;
+  }
+
+  /* 2.5 → 3 sec : 1st Fade In */
+  60% {
+    opacity: 1;
+  }
+
+  /* 4 → 4.5 sec : 2nd Fade Out */
+  80% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  /* 4.5 → 5 sec : 2nd Fade In */
+  100% {
+    opacity: 1;
+  }
+}
+/* =========================
+   DUBAI 3D HISTORY
+   EXACTLY SAME AS 2D HISTORY
+========================= */
+
+#dubaiHistory .history-header {
+  height: 55px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 !important;
+}
+
+#dubaiHistory .back-btn {
+  width: 60px !important;
+  height: 55px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  font-size: 0 !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+#dubaiHistory .history-title {
+  font-size: 25px !important;
+  font-weight: 700;
+
+  margin: -4px 0 0 0 !important;
+  line-height: 1;
+}
+
+/* Arrow */
+#dubaiHistory .back-btn::before {
+  content: "";
+
+  width: 14px;
+  height: 14px;
+
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+
+  transform: rotate(45deg);
+
+  position: absolute;
+  left: 22px;
+  top: 20px;
+}
+
+#dubaiHistory .back-btn::after {
+  content: "";
+
+  width: 22px;
+  height: 2.5px;
+
+  background: #fff;
+
+  position: absolute;
+  left: 22px;
+  top: 27px;
+
+  border-radius: 2px;
+}
+/* =========================
+   HISTORY CARD STABILITY
+   STOP CARD JUMP / SHAKE
+========================= */
+
+.history-page {
+  overflow-anchor: none;
+}
+
+.history-list {
+  overflow-anchor: none;
+}
+
+/* =========================
+   HISTORY CARD STABILITY & JUMP FIX
+========================= */
+
+.history-page {
+  overflow-anchor: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.history-list {
+  overflow-anchor: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+#dubaiHistory {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: none !important;
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: scroll-position;
+  contain: strict;
+}
+
+#dubaiHistory .history-card {
+  position: relative !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: auto !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+#dubaiHistory .history-top,
+#dubaiHistory .history-bottom {
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: auto !important;
+}
+#firebaseDubai3DHistory .history-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform: none !important;
+
+  animation: none !important;
+  transition: none !important;
+
+  position: relative;
+  display: block !important;
+}
+#firebaseDubai3DHistory {
+  margin-bottom: -3px !important;
+}
+
+#firebaseDubai3DHistory .history-card {
+  margin-bottom: -3px !important;
+}
+#dubaiHistory > .history-card {
+  width: calc(100% - 26px) !important;
+  margin-left: 13px !important;
+  margin-right: 13px !important;
+}
+/* =========================
+   HOLIDAYS
+========================= */
+
+#holidaysPage {
+  background: #f1f1f1;
+}
+
+.holiday-list {
+  width: 100%;
+  padding: 13px 13px 30px;
+}
+
+.holiday-card {
+  width: 100%;
+  min-height: 85px;
+
+  margin: 0 0 20px 0;
+  padding: 0 20px;
+
+  background: #fff;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.15);
+
+  color: #3f6687;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.holiday-date {
+  font-size: 21px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.holiday-name {
+  font-size: 21px;
+  font-weight: 600;
+
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+
+  .holiday-list {
+    padding: 13px 13px 30px;
+  }
+
+  .holiday-card {
+    min-height: 85px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  .holiday-date {
+    font-size: 19px;
+  }
+
+  .holiday-name {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 390px) {
+
+  .holiday-card {
+    min-height: 80px;
+    padding: 0 17px;
+  }
+
+  .holiday-date,
+  .holiday-name {
+    font-size: 17px;
+  }
+}
+@media (max-width: 390px) {
+
+  .holiday-card {
+    min-height: 80px;
+    padding: 0 17px;
+  }
+
+  .holiday-date,
+  .holiday-name {
+    font-size: 17px;
+  }
+}
+/* =========================
+   HOLIDAYS BACK ARROW
+   SAME AS HISTORY
+========================= */
+
+#holidaysPage .back-btn {
+  width: 60px !important;
+  height: 55px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  font-size: 0 !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+#holidaysPage .back-btn::before {
+  content: "";
+
+  width: 14px;
+  height: 14px;
+
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+
+  transform: rotate(45deg);
+
+  position: absolute;
+  left: 22px;
+  top: 20px;
+}
+
+#holidaysPage .back-btn::after {
+  content: "";
+
+  width: 22px;
+  height: 2.5px;
+
+  background: #fff;
+
+  position: absolute;
+  left: 22px;
+  top: 27px;
+
+  border-radius: 2px;
+}
+/* =========================
+   THAI 3D HISTORY
+========================= */
+
+#thai3DHistory .history-header {
+  height: 55px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 !important;
+}
+
+#thai3DHistory .back-btn {
+  width: 60px !important;
+  height: 55px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#thai3DHistory .back-btn::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  transform: rotate(45deg);
+  position: absolute;
+  left: 22px;
+  top: 20px;
+}
+
+#thai3DHistory .back-btn::after {
+  content: "";
+  width: 22px;
+  height: 2.5px;
+  background: #fff;
+  position: absolute;
+  left: 22px;
+  top: 27px;
+  border-radius: 2px;
+}
+
+#thai3DHistory .history-title {
+  font-size: 25px !important;
+  font-weight: 700;
+  margin: -4px 0 0 0 !important;
+  line-height: 1;
+}
+
+
+/* History Card */
+
+#thai3DHistory {
+  background: #f1f1f1;
+  overflow-y: auto;
+}
+
+#thai3DHistory .history-list {
+  width: 100%;
+  padding: 13px 13px 30px;
+}
+
+#thai3DHistory .history-card {
+  width: 100%;
+  height: 90px;
+  margin: 0 0 12px;
+  padding: 10px 20px;
+
+  background: #fff;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.12);
+
+  color: #3f6687;
+}
+
+#thai3DHistory .history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#thai3DHistory .history-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  margin-top: 4px;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+#thai3DHistory .history-bottom strong {
+  font-size: 27px;
+  font-weight: 500;
+}
+
+  </style>
+  
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header class="topbar">
+
+    <div class="title">
+      Millionaire - Dubai
+      <span class="new">( 2 )</span>
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================= -->
+
+  <main class="container">
+
+
+    <!-- BIG NUMBER -->
+
+    <section class="hero">
+
+      <div
+        id="number"
+        class="number">
+        --
+      </div>
+
+<div
+  id="updated"
+  class="updated">
+  Update : 2026-09-08 08:43:54 AM
+</div>
+      <!-- =========================
+     SUNDAY DUBAI 3D
+========================= -->
+
+<div id="sundayDubai3D" class="sunday-dubai-3d">
+
+  <div class="sunday-dubai-title">
+    Dubai 3D
+  </div>
+
+  <div id="sundayDubaiResult">
+    ***
+  </div>
+
+</div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TIME BUTTONS
+    ========================= -->
+
+    <section class="time-grid">
+
+
+      <button
+        class="time-card"
+        data-time="11:00 AM">
+
+        <strong>11:00 AM</strong>
+
+        <div class="result"></div>
+
+      </button>
+
+
+      <button
+        class="time-card"
+        data-time="1:00 PM">
+
+        <strong>1:00 PM</strong>
+
+        <div class="result"></div>
+
+      </button>
+
+
+
+      <button
+        class="time-card"
+        data-time="3:00 PM">
+
+        <strong>3:00 PM</strong>
+
+        <div class="result"></div>
+
+      </button>
+
+
+
+      <button
+        class="time-card"
+        data-time="5:00 PM">
+
+        <strong>5:00 PM</strong>
+
+        <div class="result"></div>
+
+      </button>
+
+
+
+      <button
+        class="time-card"
+        data-time="7:00 PM">
+
+        <strong>7:00 PM</strong>
+
+        <div class="result"></div>
+
+      </button>
+
+
+
+      <button
+        class="time-card"
+        data-time="9:00 PM">
+
+        <strong>9:00 PM</strong>
+
+        <div class="result"></div>
+
+      </button>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         BOTTOM MENU
+    ========================= -->
+
+    <section class="menu-grid">
+
+      <button onclick="openThai3DHistory()">
+  Thai 3D Results
+</button>
+
+      <button onclick="open2DResults()">
+  2D Results
+</button>
+
+      <button onclick="openDubaiHistory()">
+  Dubai 3D
+</button>
+
+      <button onclick="openHolidays()">
+  Holidays
+</button>
+
+    </section>
+
+
+  </main>
+
+<!-- =========================
+     DUBAI 3D HISTORY
+========================= -->
+
+<section id="dubaiHistory" class="history-page">
+
+  <header class="history-header">
+
+    <button
+      class="back-btn"
+      onclick="closeDubaiHistory()">
+      ←
+    </button>
+
+    <div class="history-title">
+      Dubai 3D
+    </div>
+
+  </header>
+  <div
+  id="firebaseDubai3DHistory"
+  class="history-list">
+</div>
+   
+  <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+      <div class="history-bottom">
+        <span>2026-09-06</span>
+        <strong>001</strong>
+      </div>
+    </div>
+  <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+      <div class="history-bottom">
+        <span>2026-08-30</span>
+        <strong>308</strong>
+      </div>
+    </div>
+    
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+      <div class="history-bottom">
+        <span>2026-08-23</span>
+        <strong>718</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-08-16</span>
+        <strong>729</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-08-09</span>
+        <strong>760</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-08-2</span>
+        <strong>867</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-07-26</span>
+        <strong>583</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-07-19</span>
+        <strong>322</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-07-12</span>
+        <strong>649</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-07-5</span>
+        <strong>686</strong>
+      </div>
+    </div>
+
+
+  <div class="history-list">
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+      <div class="history-bottom">
+        <span>2026-06-28</span>
+        <strong>827</strong>
+      </div>
+    </div>
+    
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+      <div class="history-bottom">
+        <span>2026-06-21</span>
+        <strong>229</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-06-14</span>
+        <strong>717</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-06-07</span>
+        <strong>856</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-05-31</span>
+        <strong>231</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-05-24</span>
+        <strong>497</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-05-17</span>
+        <strong>767</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-05-10</span>
+        <strong>648</strong>
+      </div>
+    </div>
+
+
+    <div class="history-card">
+      <div class="history-top">
+        <span>Date</span>
+        <span>3D</span>
+      </div>
+
+      <div class="history-bottom">
+        <span>2026-05-03</span>
+        <strong>413</strong>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================
+     2D RESULTS
+========================= -->
+
+<section id="twoDResults" class="history-page">
+
+  <header class="history-header">
+
+    <button
+      class="back-btn"
+      onclick="close2DResults()">
+      ←
+    </button>
+
+    <div class="history-title">
+      History
+    </div>
+
+  </header>
+
+  <div class="history-list" id="twoDList"></div>
+
+
+</section>
+<!-- =========================
+     HOLIDAYS
+========================= -->
+
+<section id="holidaysPage" class="history-page">
+
+  <header class="history-header">
+
+    <button
+      class="back-btn"
+      onclick="closeHolidays()">
+      
+    </button>
+
+    <div class="history-title">
+      Holidays
+    </div>
+
+  </header>
+
+  <div id="holidaysList" class="holiday-list"></div>
+
+</section>
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+const numberElement =
+  document.getElementById("number");
+
+
+function getDrawResult(drawName) {
+
+  if (!window.firebaseResults) {
+    return "--";
+  }
+
+  const now = new Date(syncedNow());
+
+  const pad = n =>
+    String(n).padStart(2, "0");
+
+  const today =
+    `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+
+  const firebaseKey =
+    drawName.replace(" ", "");
+
+  /* =========================
+     DATE BASED RESULT
+  ========================= */
+
+  if (
+    window.firebaseResults[today] &&
+    window.firebaseResults[today][firebaseKey] !== undefined
+  ) {
+
+    return String(
+      window.firebaseResults[today][firebaseKey]
+    ).padStart(2, "0");
+
+  }
+
+  /* =========================
+     OLD FORMAT SUPPORT
+  ========================= */
+
+  if (
+    window.firebaseResults[drawName] !== undefined
+  ) {
+
+    return String(
+      window.firebaseResults[drawName]
+    ).padStart(2, "0");
+
+  }
+
+  if (
+    window.firebaseResults[firebaseKey] !== undefined
+  ) {
+
+    return String(
+      window.firebaseResults[firebaseKey]
+    ).padStart(2, "0");
+
+  }
+
+  return "--";
+}
+
+
+/* =========================
+   SYNCED RANDOM NUMBER
+========================= */
+
+
+function randomNumber() {
+
+  const timeSlot =
+    Math.floor(
+      syncedNow() / 5000
+    );
+
+  let x =
+    Math.imul(
+      timeSlot ^ 0x6D2B79F5,
+      0x85EBCA6B
+    );
+
+  x ^= x >>> 13;
+
+  x =
+    Math.imul(
+      x,
+      0xC2B2AE35
+    );
+
+  x ^= x >>> 16;
+
+  const number =
+    (x >>> 0) % 100;
+
+  return String(number)
+    .padStart(2, "0");
+}
+
+
+const drawTimes = [
+  { name: "11:00 AM", seconds: 11 * 3600 },
+  { name: "1:00 PM", seconds: 13 * 3600 },
+  { name: "3:00 PM", seconds: 15 * 3600 },
+  { name: "5:00 PM", seconds: 17 * 3600 },
+  { name: "7:00 PM", seconds: 19 * 3600 },
+  { name: "9:00 PM", seconds: 21 * 3600 }
+];
+// ===== TEST MODE =====
+const TEST_MODE = false;
+
+// လက်ရှိအချိန်ကနေ ဘယ်နှစ်စက္ကန့်နောက်မှာ Draw ဖြစ်မလဲ
+const TEST_DRAW_AFTER_SECONDS = 60;
+let testDrawStartTime = Date.now();
+/* =========================
+   RESULT SYSTEM
+========================= */
+
+let animationToken = 0;
+let lastRandomAnimation = 0;
+let currentReveal = "";
+
+
+window.firebaseConnected = false;
+window.serverTimeOffset = 0;
+
+function syncedNow() {
+
+  const serverNow =
+    Date.now() + window.serverTimeOffset;
+
+  const MYANMAR_OFFSET_MINUTES =
+    6 * 60 + 30;
+
+  const deviceOffsetMinutes =
+    new Date(serverNow).getTimezoneOffset();
+
+  return (
+    serverNow +
+    (MYANMAR_OFFSET_MINUTES + deviceOffsetMinutes) *
+    60 *
+    1000
+  );
+}function syncedNow() {
+
+  const serverNow =
+    Date.now() + window.serverTimeOffset;
+
+  const MYANMAR_OFFSET_MINUTES =
+    6 * 60 + 30;
+
+  const deviceOffsetMinutes =
+    new Date(serverNow).getTimezoneOffset();
+
+  return (
+    serverNow +
+    (MYANMAR_OFFSET_MINUTES + deviceOffsetMinutes) *
+    60 *
+    1000
+  );
+}
+
+
+function is2DClosedDay() {
+  const now = new Date(syncedNow());
+
+  // Wednesday = 3
+  return now.getDay() === 3;
+}
+function isHoliday2D() {
+
+  const now = new Date(syncedNow());
+
+  const date =
+    String(now.getDate()).padStart(2, "0") +
+    "/" +
+    String(now.getMonth() + 1).padStart(2, "0") +
+    "/" +
+    now.getFullYear();
+
+  const holidayDates = [
+    "13/04/2026",
+    "14/04/2026",
+    "15/04/2026",
+    "26/10/2026",
+    "25/12/2026",
+    "01/01/2027"
+  ];
+
+  return holidayDates.includes(date);
+}
+window.internetReady = false;
+let internetCheckRunning = false;
+
+async function checkRealInternet() {
+
+  if (internetCheckRunning) return;
+
+  internetCheckRunning = true;
+
+  try {
+
+    const controller = new AbortController();
+
+    const timeout = setTimeout(() => {
+      controller.abort();
+    }, 2000);
+
+    const response = await fetch(
+      "https://millionaire-dubai-default-rtdb.firebaseio.com/.json?check=" + Date.now(),
+      {
+        method: "GET",
+        cache: "no-store",
+        signal: controller.signal
+      }
+    );
+
+    clearTimeout(timeout);
+
+    if (!response.ok) {
+      throw new Error("Firebase offline");
+    }
+
+    window.internetReady = true;
+
+    checkResult();
+
+  } catch (error) {
+
+    window.internetReady = false;
+
+    animationToken++;
+
+    stopResultJump();
+
+    numberElement.classList.remove("fade-out");
+
+    numberElement.style.transform =
+      "translateY(0)";
+
+    currentReveal = "OFFLINE";
+
+    numberElement.textContent = "--";
+
+  }
+
+  internetCheckRunning = false;
+}
+
+checkRealInternet();
+
+setInterval(
+  checkRealInternet,
+  2000
+);
+window.addEventListener("offline", () => {
+
+  window.internetReady = false;
+
+  animationToken++;
+
+  stopResultJump();
+
+  numberElement.classList.remove("fade-out");
+
+  numberElement.style.transform =
+    "translateY(0)";
+
+  currentReveal = "OFFLINE";
+
+  numberElement.textContent = "--";
+
+});
+
+
+window.addEventListener("online", () => {
+
+  checkRealInternet();
+
+});
+
+/* =========================
+   GET CURRENT DRAW
+========================= */
+
+function getCurrentDraw() {
+  // ===== TEST MODE =====
+ if (TEST_MODE) {
+    const testNow =
+      Date.now();
+
+    const testDrawTime =
+  testDrawStartTime +
+  (TEST_DRAW_AFTER_SECONDS * 1000);
+
+    const testRevealTime =
+      testDrawTime - 15000;
+
+    if (testNow >= testRevealTime &&
+        testNow < testDrawTime) {
+      return {
+        draw: {
+          name: "1:00 PM",
+          seconds: 0
+        },
+        state: "revealing"
+      };
+    }
+
+    if (testNow >= testDrawTime &&
+        testNow < testDrawTime + 60000) {
+      return {
+        draw: {
+          name: "1:00 PM",
+          seconds: 0
+        },
+        state: "fixed"
+      };
+    }
+
+    return null;
+  }
+  const now =
+    new Date(syncedNow());
+
+  const currentSeconds =
+    now.getHours() * 3600 +
+    now.getMinutes() * 60 +
+    now.getSeconds();
+
+  for (const draw of drawTimes) {
+
+    const revealTime =
+      draw.seconds - 15;
+
+    if (
+      currentSeconds >= revealTime &&
+      currentSeconds < draw.seconds
+    ) {
+
+      return {
+        draw: draw,
+        state: "revealing"
+      };
+
+    }
+
+    if (
+      currentSeconds >= draw.seconds &&
+      currentSeconds < draw.seconds + 300
+    ) {
+
+      return {
+        draw: draw,
+        state: "fixed"
+      };
+
+    }
+
+  }
+
+  return null;
+}
+/* =========================
+   SUNDAY DUBAI 3D
+========================= */
+
+function updateSundayDubai3D() {
+
+  const box =
+    document.getElementById("sundayDubai3D");
+
+  const resultBox =
+    document.getElementById("sundayDubaiResult");
+
+  if (!box || !resultBox) return;
+
+  const now =
+    new Date(syncedNow());
+
+  /* Sunday = 0 */
+  const isSunday = now.getDay() === 0;
+
+  if (!isSunday) {
+
+    box.style.display = "none";
+
+    return;
+  }
+
+  box.style.display = "block";
+
+  const currentSeconds =
+    now.getHours() * 3600 +
+    now.getMinutes() * 60 +
+    now.getSeconds();
+
+  const fivePM =
+    17 * 3600;
+
+  const sevenPM =
+    19 * 3600;
+
+  const ninePM =
+    21 * 3600;
+
+
+  /* =========================
+     5 PM
+     နောက်ဆုံးဂဏန်း → ထိပ်
+  ========================= */
+
+  let top = "*";
+
+  if (currentSeconds >= fivePM) {
+
+    const result5 =
+      getDrawResult("5:00 PM");
+
+    if (
+      result5 &&
+      result5 !== "--" &&
+      result5.length >= 2
+    ) {
+      top =
+        result5.charAt(
+          result5.length - 1
+        );
+    }
+  }
+
+
+  /* =========================
+     7 PM
+     နောက်ဆုံးဂဏန်း → အလည်
+  ========================= */
+
+  let middle = "*";
+
+  if (currentSeconds >= sevenPM) {
+
+    const result7 =
+      getDrawResult("7:00 PM");
+
+    if (
+      result7 &&
+      result7 !== "--" &&
+      result7.length >= 2
+    ) {
+      middle =
+        result7.charAt(
+          result7.length - 1
+        );
+    }
+  }
+
+
+  /* =========================
+     9 PM
+     နောက်ဆုံးဂဏန်း → အပိတ်
+  ========================= */
+
+  let bottom = "*";
+
+  if (currentSeconds >= ninePM) {
+
+    const result9 =
+      getDrawResult("9:00 PM");
+
+    if (
+      result9 &&
+      result9 !== "--" &&
+      result9.length >= 2
+    ) {
+      bottom =
+        result9.charAt(
+          result9.length - 1
+        );
+    }
+  }
+
+
+  resultBox.textContent =
+    top + middle + bottom;
+}
+
+/* =========================
+   UPDATE TIME CARDS
+========================= */
+
+function updateTimeCards() {
+
+  const now = new Date(syncedNow());
+
+const currentSeconds =
+  now.getHours() * 3600 +
+  now.getMinutes() * 60 +
+  now.getSeconds();
+
+  const cards =
+    document.querySelectorAll(
+      ".container .time-card"
+    );
+
+  drawTimes.forEach((draw, index) => {
+
+    const card = cards[index];
+
+    if (!card) return;
+
+    const resultBox =
+      card.querySelector(".result");
+
+    if (!resultBox) return;
+
+    if (currentSeconds >= draw.seconds) {
+
+      resultBox.textContent = getDrawResult(draw.name);
+
+    } else {
+
+      resultBox.textContent = "";
+
+    }
+
+  });
+}
+
+
+
+
+
+/* =========================
+   RESULT JUMP
+========================= */
+
+
+
+function startResultJump(draw) {
+
+  stopResultJump();
+
+  const result =
+    getDrawResult(draw.name);
+
+  animationToken++;
+
+  numberElement.textContent =
+    result;
+
+  numberElement.classList.remove(
+    "random-fade-out",
+    "random-fade-in",
+    "pre-result-loop"
+  );
+
+  // Animation ကို browser က အသစ်ပြန်စအောင်
+  void numberElement.offsetWidth;
+
+  // :45 ကနေ Draw Time အထိ အဆက်မပြတ် Loop
+  numberElement.classList.add(
+    "pre-result-loop"
+  );
+}
+
+/* =========================
+   STOP JUMP
+========================= */
+
+function stopResultJump() {
+
+  numberElement.classList.remove(
+    "fade-out",
+    "random-fade-out",
+    "random-fade-in",
+    "pre-result-loop"
+  );
+
+  numberElement.style.transform =
+    "translateY(0)";
+}
+
+
+/* =========================
+   SHOW PRE RESULT
+========================= */
+
+function showPreResult(draw) {
+
+  const result =
+    getDrawResult(draw.name);
+
+  numberElement.textContent =
+    result;
+
+  startResultJump(draw);
+}
+
+
+/* =========================
+   FINAL RESULT
+========================= */
+
+function showFinalResult(draw) {
+
+  stopResultJump();
+
+  numberElement.style.transform =
+    "translateY(0)";
+
+  numberElement.textContent = getDrawResult(draw.name);
+
+  updateTimeCards();
+}
+
+
+/* =========================
+   RANDOM ANIMATION
+========================= */
+
+function animateRandom() {
+
+  if (
+    window.internetReady !== true ||
+    window.firebaseConnected !== true
+  ) {
+    animationToken++;
+
+    stopResultJump();
+
+    numberElement.classList.remove("random-fade-out");
+    numberElement.classList.remove("random-fade-in");
+
+    numberElement.textContent = "--";
+
+    return;
+  }
+
+  animationToken++;
+
+  const token = animationToken;
+
+  // ဒီ 5 seconds အတွင်း ဂဏန်းတစ်ခုတည်း
+  const result = randomNumber();
+
+  numberElement.classList.remove("random-fade-out");
+  numberElement.classList.remove("random-fade-in");
+
+  numberElement.textContent = result;
+
+  // 1st Fade Out
+  setTimeout(() => {
+    if (token !== animationToken) return;
+
+    numberElement.classList.remove("random-fade-in");
+    numberElement.classList.add("random-fade-out");
+  }, 2000);
+
+  // 1st Fade In
+  setTimeout(() => {
+    if (token !== animationToken) return;
+
+    numberElement.classList.remove("random-fade-out");
+    numberElement.classList.add("random-fade-in");
+  }, 2500);
+
+  // 2nd Fade Out
+  setTimeout(() => {
+    if (token !== animationToken) return;
+
+    numberElement.classList.remove("random-fade-in");
+    numberElement.classList.add("random-fade-out");
+  }, 4000);
+
+  // 2nd Fade In
+  setTimeout(() => {
+    if (token !== animationToken) return;
+
+    numberElement.classList.remove("random-fade-out");
+    numberElement.classList.add("random-fade-in");
+  }, 4500);
+}
+/* =========================
+   MAIN CHECK
+========================= */
+
+function checkResult() {
+  updateSundayDubai3D();
+  // =========================
+  // WEDNESDAY = 2D CLOSED
+  // =========================
+
+  if (is2DClosedDay() || isHoliday2D())  {
+
+    animationToken++;
+
+    stopResultJump();
+
+    numberElement.classList.remove(
+      "fade-out",
+      "random-fade-out",
+      "random-fade-in",
+      "pre-result-loop"
+    );
+
+    numberElement.style.transform =
+      "translateY(0)";
+
+    currentReveal =
+      "2D_CLOSED";
+
+    numberElement.textContent =
+      "--";
+
+    updateTimeCards();
+
+    return;
+  }
+
+  if (
+    window.internetReady !== true ||
+    window.firebaseConnected !== true
+  ) {
+
+    animationToken++;
+
+    stopResultJump();
+
+    numberElement.classList.remove("fade-out");
+
+    numberElement.style.transform =
+      "translateY(0)";
+
+    currentReveal = "OFFLINE";
+
+    numberElement.textContent = "--";
+
+    return;
+  }
+
+  // ဒီအောက်က မူရင်း code အတိုင်းထားပါ
+  const current =
+    getCurrentDraw();
+
+  const now = new Date(syncedNow());
+
+  const currentSeconds =
+    now.getHours() * 3600 +
+    now.getMinutes() * 60 +
+    now.getSeconds();
+
+
+  /* =========================
+     9:00 PM နောက်ပိုင်း
+     Result နဲ့ပဲ ရပ်
+  ========================= */
+
+  const ninePM =
+    21 * 3600;
+
+  if (currentSeconds >= ninePM) {
+
+  stopResultJump();
+
+  currentReveal =
+    "DAY_FINISHED";
+
+  const result9 =
+    getDrawResult("9:00 PM");
+
+  numberElement.textContent =
+    result9;
+
+  updateTimeCards();
+
+  
+
+  return;
+}
+
+
+  /* =========================
+     RESULT REVEAL
+     10:59:45 → 11:00
+  ========================= */
+
+  if (
+    current &&
+    current.state === "revealing"
+  ) {
+
+    if (
+      currentReveal !==
+      current.draw.name
+    ) {
+
+      currentReveal =
+        current.draw.name;
+
+      showPreResult(
+        current.draw
+      );
+
+    }
+
+    return;
+  }
+
+
+  /* =========================
+     RESULT FIXED
+     Draw time → 1 minute
+  ========================= */
+
+  if (
+    current &&
+    current.state === "fixed"
+  ) {
+
+    if (
+      currentReveal !==
+      current.draw.name + "_fixed"
+    ) {
+
+      currentReveal =
+        current.draw.name + "_fixed";
+
+      showFinalResult(
+        current.draw
+      );
+
+    }
+
+    return;
+  }
+
+
+  /* =========================
+     7:00 AM မတိုင်ခင်
+     Random မလုပ်
+  ========================= */
+
+  const sevenAM =
+    7 * 3600;
+
+  if (currentSeconds < sevenAM) {
+
+  stopResultJump();
+
+  currentReveal =
+    "WAITING_FOR_7AM";
+
+  numberElement.textContent = "--";
+
+  return;
+}
+
+
+  /* =========================
+     NORMAL RANDOM
+     7:00 AM → 8:59:45 PM
+  ========================= */
+
+  
+
+  currentReveal = "";
+
+  updateTimeCards();
+
+
+  const currentRandomSlot =
+  Math.floor(
+    syncedNow() / 5000
+  );
+
+
+if (
+  currentRandomSlot !==
+  lastRandomAnimation
+) {
+
+  lastRandomAnimation =
+    currentRandomSlot;
+
+  animateRandom();
+
+}
+}
+
+
+/* =========================
+   START RESULT SYSTEM
+========================= */
+
+numberElement.textContent =
+  "--";
+
+checkResult();
+
+setInterval(
+  checkResult,
+  1000
+);
+
+
+
+
+/* =========================
+   DUBAI HISTORY
+========================= */
+
+function openDubaiHistory() {
+
+  history.pushState(
+    { page: "dubaiHistory" },
+    "",
+    "#dubaiHistory"
+  );
+
+  document.querySelector(".container").style.display = "none";
+
+  document.querySelector(".topbar").style.display = "none";
+
+  document.getElementById("dubaiHistory").style.display = "block";
+
+  window.scrollTo(0, 0);
+}
+
+
+function closeDubaiHistory() {
+
+  document.getElementById("dubaiHistory").style.display = "none";
+
+  document.querySelector(".container").style.display = "block";
+
+  document.querySelector(".topbar").style.display = "flex";
+
+  window.scrollTo(0, 0);
+}
+/* =========================
+   2D RESULTS
+========================= */
+
+function open2DResults() {
+
+  history.pushState(
+    { page: "2d" },
+    "",
+    "#2d"
+  );
+
+  document.querySelector(".container").style.display = "none";
+
+  document.querySelector(".topbar").style.display = "none";
+
+  document.getElementById("twoDResults").style.display = "block";
+
+  window.scrollTo(0, 0);
+
+  load2DResults();
+}
+
+
+function close2DResults() {
+
+  document.getElementById("twoDResults").style.display = "none";
+
+  document.querySelector(".container").style.display = "block";
+
+  document.querySelector(".topbar").style.display = "flex";
+
+  window.scrollTo(0, 0);
+}
+/* =========================
+   2D RESULTS DATA
+========================= */
+
+const twoDData = [
+    {
+  date: "2026-09-08",
+  results: ["45", "02", "90", "98", "39", "52"]
+},
+
+{
+  date: "2026-09-07",
+  results: ["25", "03", "15", "50", "43", "19"]
+},
+
+{
+  date: "2026-09-06",
+  results: ["89", "18", "65", "80", "10", "51"]
+},
+
+{
+  date: "2026-09-05",
+  results: ["08", "30", "39", "79", "95", "20"]
+},
+
+{
+  date: "2026-09-04",
+  results: ["23", "38", "18", "91", "77", "59"]
+},
+
+{
+  date: "2026-09-03",
+  results: ["01", "85", "73", "91", "39", "14"]
+},
+
+{
+  date: "2026-09-01",
+  results: ["15", "00", "53", "36", "09", "70"]
+},
+
+{
+  date: "2026-08-31",
+  results: ["67", "24", "88", "05", "69", "93"]
+},
+
+{
+  date: "2026-08-30",
+  results: ["68", "83", "35", "73", "80", "28"]
+},
+
+{
+  date: "2026-08-29",
+  results: ["43", "97", "48", "36", "59", "86"]
+},
+
+{
+  date: "2026-08-28",
+  results: ["65", "56", "17", "23", "95", "24"]
+},
+
+{
+  date: "2026-08-27",
+  results: ["38", "99", "04", "29", "45", "63"]
+},
+
+{
+  date: "2026-08-25",
+  results: ["04", "88", "89", "76", "25", "05"]
+},
+
+{
+  date: "2026-08-24",
+  results: ["65", "50", "65", "77", "38", "19"]
+},
+
+{
+  date: "2026-08-23",
+  results: ["78", "35", "23", "57", "31", "98"]
+},
+
+{
+  date: "2026-08-22",
+  results: ["18", "57", "30", "10", "43", "95"]
+},
+
+{
+  date: "2026-08-21",
+  results: ["16", "77", "00", "84", "71", "59"]
+},
+
+{
+  date: "2026-08-20",
+  results: ["70", "12", "58", "56", "22", "64"]
+},
+
+{
+  date: "2026-08-18",
+  results: ["29", "39", "40", "98", "46", "57"]
+},
+
+{
+  date: "2026-08-17",
+  results: ["69", "16", "00", "02", "34", "72"]
+},
+
+{
+  date: "2026-08-16",
+  results: ["97", "42", "77", "57", "02", "39"]
+},
+
+{
+  date: "2026-08-15",
+  results: ["13", "88", "90", "61", "70", "55"]
+},
+
+{
+  date: "2026-08-14",
+  results: ["97", "42", "77", "57", "02", "39"]
+},
+    {
+  date: "2026-08-13",
+  results: ["", "", "", "", "", ""]
+},
+ {
+  date: "2026-08-12",
+  results: ["", "", "", "", "", ""]
+},
+
+    {
+  date: "2026-08-11",
+  results: ["21", "54", "73", "38", "00", "96"]
+},
+
+{
+  date: "2026-08-10",
+  results: ["48", "10", "07", "91", "81", "56"]
+},
+
+{
+  date: "2026-08-09",
+  results: ["26", "91", "99", "07", "26", "70"]
+},
+
+{
+  date: "2026-08-08",
+  results: ["29", "96", "00", "92", "26", "54"]
+},
+
+{
+  date: "2026-08-07",
+  results: ["56", "42", "05", "45", "76", "70"]
+},
+
+{
+  date: "2026-08-06",
+  results: ["82", "90", "36", "51", "73", "27"]
+},
+
+{
+  date: "2026-08-04",
+  results: ["18", "06", "76", "35", "23", "17"]
+},
+
+{
+  date: "2026-08-03",
+  results: ["01", "87", "51", "21", "58", "08"]
+},
+
+{
+  date: "2026-08-02",
+  results: ["46", "31", "51", "18", "96", "17"]
+},
+
+{
+  date: "2026-08-01",
+  results: ["76", "29", "71", "67", "18", "14"]
+},
+
+{
+  date: "2026-07-31",
+  results: ["36", "59", "53", "14", "81", "29"]
+},
+
+{
+  date: "2026-07-30",
+  results: ["92", "53", "08", "06", "92", "89"]
+},
+
+{
+  date: "2026-07-28",
+  results: ["08", "63", "31", "11", "77", "59"]
+},
+
+{
+  date: "2026-07-27",
+  results: ["40", "53", "99", "93", "09", "92"]
+},
+
+{
+  date: "2026-07-26",
+  results: ["17", "41", "27", "05", "08", "83"]
+},
+
+{
+  date: "2026-07-25",
+  results: ["18", "82", "27", "61", "91", "60"]
+},
+
+{
+  date: "2026-07-24",
+  results: ["40", "06", "52", "03", "58", "94"]
+},
+
+{
+  date: "2026-07-23",
+  results: ["14", "61", "86", "81", "08", "12"]
+},
+
+{
+  date: "2026-07-21",
+  results: ["13", "08", "62", "65", "54", "82"]
+},
+
+{
+  date: "2026-07-20",
+  results: ["58", "62", "61", "86", "75", "48"]
+},
+
+{
+  date: "2026-07-19",
+  results: ["59", "89", "65", "93", "12", "62"]
+},
+
+{
+  date: "2026-07-18",
+  results: ["01", "37", "64", "67", "58", "31"]
+},
+
+{
+  date: "2026-07-17",
+  results: ["12", "14", "40", "64", "42", "39"]
+},
+
+{
+  date: "2026-07-16",
+  results: ["13", "38", "00", "16", "10", "62"]
+},
+
+{
+  date: "2026-07-14",
+  results: ["67", "86", "75", "71", "63", "08"]
+},
+
+{
+  date: "2026-07-13",
+  results: ["99", "45", "77", "61", "75", "91"]
+},
+
+{
+  date: "2026-07-12",
+  results: ["67", "17", "48", "76", "54", "49"]
+},
+
+{
+  date: "2026-07-11",
+  results: ["70", "88", "04", "73", "99", "56"]
+},
+
+{
+  date: "2026-07-10",
+  results: ["78", "25", "88", "48", "09", "52"]
+},
+
+{
+  date: "2026-07-09",
+  results: ["52", "30", "27", "54", "94", "23"]
+},
+
+{
+  date: "2026-07-07",
+  results: ["61", "01", "58", "40", "85", "86"]
+},
+
+{
+  date: "2026-07-06",
+  results: ["65", "22", "11", "04", "30", "33"]
+},
+
+{
+  date: "2026-07-05",
+  results: ["96", "44", "89", "26", "28", "46"]
+},
+
+{
+  date: "2026-07-04",
+  results: ["48", "30", "92", "25", "28", "45"]
+},
+
+  {
+    date: "2026-07-03",
+    results: ["23", "94", "07", "02", "44", "32"]
+  },
+
+{
+    date: "2026-07-02",
+    results: ["80", "68", "78", "07", "30", "47"]
+  },
+
+  {
+    date: "2026-06-30",
+    results: ["05", "64", "13", "71", "69", "46"]
+  },
+
+  {
+    date: "2026-06-29",
+    results: ["28", "64", "74", "59", "35", "11"]
+  },
+  {
+    date: "2026-06-28",
+    results: ["86", "58", "55", "08", "22", "07"]
+  },
+
+  {
+    date: "2026-06-27",
+    results: ["44", "79", "29", "70", "29", "98"]
+  },
+
+  {
+    date: "2026-06-26",
+    results: ["22", "55", "97", "13", "36", "92"]
+  },
+     {
+    date: "2026-06-25",
+    results: ["59", "60", "00", "44", "31", "28"]
+  },
+
+  {
+    date: "2026-06-23",
+    results: ["56", "49", "47", "36", "62", "89"]
+  },
+
+  {
+    date: "2026-06-22",
+    results: ["54", "11", "97", "41", "14", "61"]
+  },
+  {
+    date: "2026-06-21",
+    results: ["03", "01", "61", "02", "12", "09"]
+  },
+
+  {
+    date: "2026-06-20",
+    results: ["17", "32", "64", "96", "94", "92"]
+  },
+
+  {
+    date: "2026-06-19",
+    results: ["84", "75", "07", "35", "82", "89"]
+  },
+
+{
+    date: "2026-06-18",
+    results: ["74", "92", "12", "13", "09", "53"]
+  },
+
+  {
+    date: "2026-06-16",
+    results: ["71", "03", "65", "32", "93", "86"]
+  },
+
+  {
+    date: "2026-06-15",
+    results: ["75", "69", "93", "78", "12", "69"]
+  },
+  {
+    date: "2026-06-14",
+    results: ["93", "85", "91", "07", "71", "37"]
+  },
+
+  {
+    date: "2026-06-13",
+    results: ["75", "52", "37", "63", "45", "85"]
+  },
+
+  {
+    date: "2026-06-12",
+    results: ["27", "72", "63", "87", "61", "86"]
+  },
+
+    {
+    date: "2026-06-11",
+    results: ["73", "69", "91", "95", "47", "51"]
+  },
+
+  {
+    date: "2026-06-09",
+    results: ["53", "84", "91", "08", "63", "13"]
+  },
+
+  {
+    date: "2026-06-08",
+    results: ["37", "21", "09", "26", "45", "00"]
+  },
+  {
+    date: "2026-06-07",
+    results: ["19", "71", "32", "98", "75", "96"]
+  },
+
+  {
+    date: "2026-06-06",
+    results: ["36", "03", "14", "13", "81", "12"]
+  },
+
+  {
+    date: "2026-06-5",
+    results: ["53", "04", "73", "94", "25", "46"]
+  },
+
+{
+    date: "2026-06-04",
+    results: ["30", "78", "63", "24", "28", "97"]
+  },
+
+  {
+    date: "2026-06-02",
+    results: ["18", "35", "62", "95", "66", "62"]
+  },
+
+  {
+    date: "2026-06-01",
+    results: ["04", "80", "87", "73", "89", "03"]
+  },
+  {
+    date: "2026-05-31",
+    results: ["06", "81", "24", "82", "93", "51"]
+  },
+
+  {
+    date: "2026-05-30",
+    results: ["79", "93", "24", "98", "84", "87"]
+  },
+
+  {
+    date: "2026-05-29",
+    results: ["72", "66", "44", "36", "48", "81"]
+   },
+    {
+    date: "2026-05-28",
+    results: ["11", "34", "19", "84", "38", "55"]
+  },
+
+  {
+    date: "2026-05-26",
+    results: ["36", "84", "21", "90", "42", "34"]
+  },
+
+  {
+    date: "2026-05-25",
+    results: ["31", "20", "72", "62", "73", "82"]
+  },
+  {
+    date: "2026-05-24",
+    results: ["12", "28", "06", "14", "49", "27"]
+  },
+
+  {
+    date: "2026-05-23",
+    results: ["19", "00", "30", "07", "98", "16"]
+  },
+
+  {
+    date: "2026-05-22",
+    results: ["38", "41", "28", "14", "49", "06"]
+  },
+
+{
+    date: "2026-05-21",
+    results: ["35", "15", "34", "23", "59", "85"]
+  },
+
+  {
+    date: "2026-05-19",
+    results: ["89", "31", "59", "69", "81", "01"]
+  },
+
+  {
+    date: "2026-05-18",
+    results: ["56", "69", "66", "78", "74", "39"]
+  },
+  {
+    date: "2026-05-17",
+    results: ["18", "11", "85", "77", "86", "47"]
+  },
+
+  {
+    date: "2026-05-16",
+    results: ["31", "74", "01", "77", "18", "04"]
+  },
+
+  {
+    date: "2026-05-15",
+    results: ["97", "09", "77", "27", "83", "33"]
+  },
+
+    {
+    date: "2026-05-14",
+    results: ["18", "89", "01", "24", "66", "78"]
+  },
+
+  {
+    date: "2026-05-12",
+    results: ["85", "76", "32", "42", "91", "49"]
+  },
+
+  {
+    date: "2026-05-11",
+    results: ["67", "91", "61", "23", "96", "95"]
+  },
+  {
+    date: "2026-05-10",
+    results: ["88", "79", "68", "06", "04", "98"]
+  },
+
+  {
+    date: "2026-05-09",
+    results: ["76", "26", "65", "75", "91", "75"]
+  },
+
+  {
+    date: "2026-05-08",
+    results: ["28", "03", "43", "20", "78", "34"]
+  },
+
+{
+    date: "2026-05-07",
+    results: ["76", "21", "98", "85", "45", "60"]
+  },
+
+  {
+    date: "2026-05-05",
+    results: ["21", "96", "87", "13", "25", "13"]
+  },
+
+  {
+    date: "2026-05-4",
+    results: ["60", "82", "15", "11", "51", "01"]
+  },
+  {
+    date: "2026-05-03",
+    results: ["55", "20", "10", "24", "91", "43"]
+  },
+
+  {
+    date: "2026-05-02",
+    results: ["20", "61", "44", "88", "74", "65"]
+  },
+
+  {
+    date: "2026-05-01",
+    results: ["99", "55", "80", "09", "02", "79"]
+  }
+
+];
+
+
+const twoDTimes = [
+  "11:00 AM",
+  "1:00 PM",
+  "3:00 PM",
+  "5:00 PM",
+  "7:00 PM",
+  "9:00 PM"
+];
+
+
+function load2DResults() {
+
+  const list =
+    document.getElementById("twoDList");
+
+  if (!list) return;
+
+  /* =========================
+     OLD STATIC HISTORY
+  ========================= */
+
+  const allHistory = {};
+
+  twoDData.forEach(item => {
+
+    const dayData = {};
+
+    twoDTimes.forEach((time, index) => {
+
+      const historyKey =
+        time.replace(" ", "");
+
+      dayData[historyKey] =
+        item.results[index] || "";
+
+    });
+
+    allHistory[item.date] =
+      dayData;
+
+  });
+
+
+  /* =========================
+     FIREBASE HISTORY
+  ========================= */
+
+  const firebaseHistory =
+    window.firebaseHistory || {};
+
+  Object.keys(firebaseHistory).forEach(dateKey => {
+
+    if (!allHistory[dateKey]) {
+      allHistory[dateKey] = {};
+    }
+
+    Object.assign(
+      allHistory[dateKey],
+      firebaseHistory[dateKey]
+    );
+
+  });
+
+
+  /* =========================
+     CURRENT DATE / TIME
+  ========================= */
+
+  const now =
+    new Date(syncedNow());
+
+  const pad = n =>
+    String(n).padStart(2, "0");
+
+  const today =
+    `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+
+  const currentSeconds =
+    now.getHours() * 3600 +
+    now.getMinutes() * 60 +
+    now.getSeconds();
+
+
+  /* =========================
+     DISPLAY
+  ========================= */
+
+  list.innerHTML = "";
+
+  const dates =
+    Object.keys(allHistory).sort(
+      (a, b) => b.localeCompare(a)
+    );
+
+
+  dates.forEach(dateKey => {
+
+    const dayData =
+      allHistory[dateKey];
+
+    if (!dayData) return;
+
+
+    /* =========================
+       TODAY TIME FILTER
+    ========================= */
+
+    const isToday =
+      dateKey === today;
+
+
+    const date =
+      document.createElement("div");
+
+    date.className =
+      "twoD-date";
+
+    date.textContent =
+      dateKey;
+
+    list.appendChild(date);
+
+
+    const grid =
+      document.createElement("div");
+
+    grid.className =
+      "time-grid";
+
+
+    twoDTimes.forEach((time, index) => {
+
+      const historyKey =
+        time.replace(" ", "");
+
+
+      /* =========================
+         DRAW TIME
+      ========================= */
+
+      const drawSeconds = [
+        11 * 3600, // 11:00 AM
+        13 * 3600, // 1:00 PM
+        15 * 3600, // 3:00 PM
+        17 * 3600, // 5:00 PM
+        19 * 3600, // 7:00 PM
+        21 * 3600  // 9:00 PM
+      ][index];
+
+
+      let result =
+        dayData[historyKey] || "";
+
+
+      /* =========================
+         TODAY ONLY
+         Future result မပြ
+      ========================= */
+
+      if (
+        isToday &&
+        currentSeconds < drawSeconds
+      ) {
+
+        result = "";
+
+      }
+
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "time-card";
+
+
+      card.innerHTML = `
+        <strong>${time}</strong>
+        <div class="result">${result}</div>
+      `;
+
+
+      grid.appendChild(card);
+
+    });
+
+
+    list.appendChild(grid);
+
+  });
+
+}
+
+  /* =========================
+   HOLIDAYS
+========================= */
+
+const holidaysData = [
+  {date:"01/01/2027", name:"New Year Day"},
+  {date:"25/12/2026", name:"Christmas Day"},
+  {date:"26/10/2026", name:"Thadingyut Full Moon Day"},
+  {date:"15/04/2026", name:"Thingyan Festival"},
+  {date:"14/04/2026", name:"Thingyan Festival"},
+  {date:"13/04/2026", name:"Thingyan Festival"}
+];
+
+function loadHolidays() {
+
+  const list =
+    document.getElementById("holidaysList");
+
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  holidaysData.forEach(holiday => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "holiday-card";
+
+    card.innerHTML = `
+      <span class="holiday-date">
+        ${holiday.date}
+      </span>
+
+      <span class="holiday-name">
+        ${holiday.name}
+      </span>
+    `;
+
+    list.appendChild(card);
+
+  });
+
+}
+
+
+function openHolidays() {
+
+  history.pushState(
+    { page: "holidays" },
+    "",
+    "#holidays"
+  );
+
+  document.querySelector(".container").style.display =
+    "none";
+
+  document.querySelector(".topbar").style.display =
+    "none";
+
+  document.getElementById("holidaysPage").style.display =
+    "block";
+
+  loadHolidays();
+
+  window.scrollTo(0, 0);
+
+}
+
+
+function closeHolidays() {
+
+  document.getElementById("holidaysPage").style.display =
+    "none";
+
+  document.querySelector(".container").style.display =
+    "block";
+
+  document.querySelector(".topbar").style.display =
+    "flex";
+
+  window.scrollTo(0, 0);
+
+}
+function openThai3DHistory() {
+
+  history.pushState(
+    { page: "thai3DHistory" },
+    "",
+    "#thai3DHistory"
+  );
+
+
+  document.querySelector(
+    ".container"
+  ).style.display = "none";
+
+
+  document.querySelector(
+    ".topbar"
+  ).style.display = "none";
+
+
+  const page =
+    document.getElementById(
+      "thai3DHistory"
+    );
+
+  if (page) {
+
+    page.style.display = "block";
+
+  }
+
+
+  /*
+    Firebase data ရပြီးသားဆို
+    ချက်ချင်းပြ
+  */
+
+  if (
+    typeof window.loadThai3DHistory ===
+    "function"
+  ) {
+
+    window.loadThai3DHistory();
+
+  }
+
+
+  window.scrollTo(0, 0);
+
+}
+
+function closeThai3DHistory() {
+
+  document.getElementById("thai3DHistory").style.display = "none";
+
+  document.querySelector(".container").style.display = "block";
+
+  document.querySelector(".topbar").style.display = "flex";
+
+  window.scrollTo(0, 0);
+}
+window.loadThai3DHistory = function () {
+
+  const list =
+    document.getElementById("thai3DList");
+
+  if (!list) {
+    console.error(
+      "❌ thai3DList not found"
+    );
+    return;
+  }
+
+
+  const firebaseData =
+    window.firebaseThai3DHistory || [];
+
+  const staticData =
+    window.thai3DHistoryData || [];
+
+
+  /*
+    Firebase + Static
+  */
+
+  const allData = [
+    ...firebaseData,
+    ...staticData
+  ];
+
+
+  /*
+    Date တူရင် Firebase ကို ဦးစားပေး
+  */
+
+  const unique = {};
+
+
+  staticData.forEach(item => {
+
+    if (!item) return;
+
+    unique[item.date] = item;
+
+  });
+
+
+  firebaseData.forEach(item => {
+
+    if (!item) return;
+
+    unique[item.date] = item;
+
+  });
+
+
+  const finalData =
+    Object.values(unique);
+
+
+  /*
+    Newest date first
+  */
+
+  finalData.sort((a, b) => {
+
+    function convert(date) {
+
+      const p =
+        String(date).split(/[-\/]/);
+
+      if (p.length !== 3) {
+        return "";
+      }
+
+      return `${p[2]}-${p[1]}-${p[0]}`;
+
+    }
+
+    return convert(b.date)
+      .localeCompare(convert(a.date));
+
+  });
+
+
+  /*
+    Clear old cards
+  */
+
+  list.innerHTML = "";
+
+
+  /*
+    Create cards
+  */
+
+  finalData.forEach(item => {
+
+    if (!item) return;
+
+
+    const result =
+      String(item.result);
+
+
+    if (
+      result === "" ||
+      result === "undefined" ||
+      result === "null"
+    ) {
+      return;
+    }
+
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "history-card";
+
+
+    card.innerHTML = `
+
+      <div class="history-top">
+
+        <span>Date</span>
+
+        <span>3D</span>
+
+      </div>
+
+
+      <div class="history-bottom">
+
+        <span>
+          ${item.date}
+        </span>
+
+        <strong>
+          ${result.padStart(3, "0")}
+        </strong>
+
+      </div>
+
+    `;
+
+
+    list.appendChild(card);
+
+  });
+
+
+  console.log(
+    "✅ Thai 3D cards:",
+    finalData.length
+  );
+
+};
+
+/* =========================
+   PHONE SYSTEM BACK
+   HISTORY PAGES
+========================= */
+
+window.addEventListener("popstate", function () {
+
+  const dubaiHistory =
+    document.getElementById("dubaiHistory");
+
+  const twoDResults =
+    document.getElementById("twoDResults");
+
+  const holidaysPage =
+    document.getElementById("holidaysPage");
+const thai3DHistory =
+  document.getElementById("thai3DHistory");
+
+  /* Dubai 3D */
+  if (
+    dubaiHistory &&
+    dubaiHistory.style.display === "block"
+  ) {
+
+    closeDubaiHistory();
+
+    return;
+  }
+
+
+  /* 2D History */
+  if (
+    twoDResults &&
+    twoDResults.style.display === "block"
+  ) {
+
+    close2DResults();
+
+    return;
+  }
+
+
+  /* Holidays */
+  if (
+    holidaysPage &&
+    holidaysPage.style.display === "block"
+  ) {
+
+    closeHolidays();
+
+    return;
+  }
+
+/* Thai 3D History */
+if (
+  thai3DHistory &&
+  thai3DHistory.style.display === "block"
+) {
+
+  closeThai3DHistory();
+
+  return;
+
+}
+});
+/*
+  History ကို အလိုအလျောက် update
+  1 second တစ်ကြိမ်
+*/
+
+
+/* =========================
+   UPDATE TIME
+========================= */
+
+function getCurrentDateTime() {
+
+  const now = new Date(syncedNow());
+
+  const pad = n =>
+    String(n).padStart(2, "0");
+
+  const year =
+    now.getFullYear();
+
+  const month =
+    pad(now.getMonth() + 1);
+
+  const day =
+    pad(now.getDate());
+
+  let hours =
+    now.getHours();
+
+  const minutes =
+    pad(now.getMinutes());
+
+  const seconds =
+    pad(now.getSeconds());
+
+  const ampm =
+    hours >= 12 ? "PM" : "AM";
+
+  hours =
+    hours % 12 || 12;
+
+  return `${year}-${month}-${day} ${pad(hours)}:${minutes}:${seconds} ${ampm}`;
+}
+
+
+function updateTime() {
+
+  const updated =
+    document.getElementById("updated");
+
+  if (!updated) return;
+
+  const current =
+    getCurrentDraw();
+
+
+  /* =========================
+     11:00 ထိုးပြီးနောက်မှ ✓ ပြ
+  ========================= */
+
+  if (
+    current &&
+    current.state === "fixed"
+  ) {
+
+    updated.innerHTML =
+      `<span style="
+        color:#22c55e;
+        font-weight:700;
+        margin-right:5px;
+      ">✓</span>Update : ${getCurrentDateTime()}`;
+
+    return;
+  }
+
+
+  /* =========================
+     Result မထိုးခင် ပုံမှန် Update
+  ========================= */
+
+  updated.textContent =
+    `Update : ${getCurrentDateTime()}`;
+}
+
+
+updateTime();
+
+setInterval(
+  updateTime,
+  1000
+);
+
+</script>
+<script type="module">
+
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  onValue,
+  set,
+  get
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAQF2yYSOb0y2bc3T5mvE5o5WkkWAtIfO8",
+  authDomain: "millionaire-dubai.firebaseapp.com",
+  projectId: "millionaire-dubai",
+  databaseURL: "https://millionaire-dubai-default-rtdb.firebaseio.com/",
+  storageBucket: "millionaire-dubai.firebasestorage.app",
+  messagingSenderId: "593658507859",
+  appId: "1:593658507859:web:f243f297e71497c1c40ca6",
+  measurementId: "G-VW7TRVBJWF"
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+const db =
+  getDatabase(app);
+/* =========================
+   FIREBASE THAI 3D HISTORY
+========================= */
+
+window.firebaseThai3DHistory = [];
+
+
+/* =========================
+   READ Thai3d
+========================= */
+
+/* =========================
+   FIREBASE THAI 3D HISTORY
+========================= */
+
+const thai3dFirebaseRef = ref(db, "Thai3d");
+
+onValue(
+  thai3dFirebaseRef,
+  (snapshot) => {
+
+    const data = snapshot.val() || {};
+
+    console.log("THAI3D FIREBASE DATA:", data);
+
+    window.firebaseThai3DHistory = [];
+
+    Object.entries(data).forEach(([dateKey, item]) => {
+
+      if (!item || item.result == null) return;
+
+      const parts = String(dateKey).split("-");
+
+      if (parts.length !== 3) return;
+
+      const year = parts[0];
+      const month = String(parts[1]).padStart(2, "0");
+      const day = String(parts[2]).padStart(2, "0");
+
+      window.firebaseThai3DHistory.push({
+
+        sortDate: `${year}-${month}-${day}`,
+
+        date: `${day}/${month}/${year}`,
+
+        result: String(item.result).padStart(3, "0")
+
+      });
+
+    });
+
+    window.firebaseThai3DHistory.sort(
+      (a, b) =>
+        b.sortDate.localeCompare(a.sortDate)
+    );
+
+    console.log(
+      "THAI3D FINAL:",
+      window.firebaseThai3DHistory
+    );
+
+    if (
+      typeof window.loadThai3DHistory === "function"
+    ) {
+
+      window.loadThai3DHistory();
+
+    }
+
+  },
+
+  (error) => {
+
+    console.error(
+      "THAI3D FIREBASE ERROR:",
+      error
+    );
+
+  }
+);
+  /* =========================
+   THAI 3D HISTORY DATA
+========================= */
+
+window.thai3DHistoryData = [
+  { date: "01/09/2026", result: "212" },
+  { date: "16/08/2026", result: "615" },
+  { date: "01/08/2026", result: "479" },
+  { date: "16/07/2026", result: "214" },
+  { date: "01/07/2026", result: "495" },
+  { date: "16/06/2026", result: "184" },
+  { date: "01/06/2026", result: "770" },
+  { date: "16/05/2026", result: "387" },
+
+  { date: "02/05/2026", result: "077" },
+  { date: "16/04/2026", result: "612" },
+  { date: "01/04/2026", result: "514" },
+  { date: "16/03/2026", result: "009" },
+  { date: "01/03/2026", result: "866" },
+  { date: "16/02/2026", result: "563" },
+  { date: "01/02/2026", result: "629" },
+  { date: "17/01/2026", result: "972" },
+  { date: "02/01/2026", result: "706" },
+
+  { date: "16/12/2025", result: "895" },
+  { date: "01/12/2025", result: "252" },
+  { date: "16/11/2025", result: "145" },
+  { date: "01/11/2025", result: "898" },
+  { date: "16/10/2025", result: "696" },
+  { date: "01/10/2025", result: "978" },
+  { date: "16/09/2025", result: "646" },
+  { date: "01/09/2025", result: "356" },
+  { date: "16/08/2025", result: "865" },
+  { date: "01/08/2025", result: "852" },
+  { date: "16/07/2025", result: "324" },
+  { date: "01/07/2025", result: "246" },
+  { date: "16/06/2025", result: "392" },
+  { date: "01/06/2025", result: "352" },
+  { date: "16/05/2025", result: "309" },
+  { date: "02/05/2025", result: "388" },
+  { date: "16/04/2025", result: "227" },
+  { date: "01/04/2025", result: "687" },
+  { date: "16/03/2025", result: "563" },
+  { date: "01/03/2025", result: "894" },
+  { date: "16/02/2025", result: "377" },
+  { date: "01/02/2025", result: "700" },
+  { date: "17/01/2025", result: "779" },
+
+  { date: "16/12/2024", result: "863" },
+  { date: "01/12/2024", result: "843" },
+  { date: "16/11/2024", result: "221" },
+  { date: "01/11/2024", result: "044" },
+  { date: "16/10/2024", result: "962" },
+  { date: "01/10/2024", result: "665" },
+  { date: "16/09/2024", result: "662" },
+  { date: "01/09/2024", result: "606" },
+  { date: "16/08/2024", result: "867" },
+  { date: "01/08/2024", result: "041" },
+  { date: "16/07/2024", result: "336" },
+  { date: "01/07/2024", result: "503" },
+  { date: "16/06/2024", result: "504" },
+  { date: "01/06/2024", result: "593" },
+  { date: "16/05/2024", result: "690" },
+  { date: "02/05/2024", result: "116" },
+  { date: "16/04/2024", result: "598" },
+  { date: "01/04/2024", result: "481" },
+  { date: "16/03/2024", result: "626" },
+  { date: "01/03/2024", result: "???" },
+  { date: "16/02/2024", result: "395" },
+  { date: "01/02/2024", result: "063" },
+  { date: "17/01/2024", result: "979" },
+
+  { date: "30/12/2023", result: "544" },
+  { date: "16/12/2023", result: "757" },
+  { date: "01/12/2023", result: "097" },
+  { date: "16/11/2023", result: "990" },
+  { date: "01/11/2023", result: "951" },
+  { date: "16/10/2023", result: "446" },
+  { date: "01/10/2023", result: "202" },
+  { date: "16/09/2023", result: "812" },
+  { date: "01/09/2023", result: "478" },
+  { date: "16/08/2023", result: "782" },
+  { date: "31/07/2023", result: "453" },
+  { date: "16/07/2023", result: "530" },
+  { date: "01/07/2023", result: "605" },
+  { date: "16/06/2023", result: "872" },
+  { date: "01/06/2023", result: "272" },
+  { date: "16/05/2023", result: "903" },
+  { date: "02/05/2023", result: "019" },
+  { date: "16/04/2023", result: "906" },
+  { date: "01/04/2023", result: "907" },
+  { date: "16/03/2023", result: "873" },
+  { date: "01/03/2023", result: "652" },
+  { date: "16/02/2023", result: "417" },
+  { date: "01/02/2023", result: "411" },
+  { date: "17/01/2023", result: "519" },
+
+  { date: "30/12/2022", result: "196" },
+  { date: "16/12/2022", result: "093" },
+  { date: "01/12/2022", result: "805" },
+  { date: "16/11/2022", result: "789" },
+  { date: "01/11/2022", result: "106" },
+  { date: "16/10/2022", result: "106" },
+  { date: "01/10/2022", result: "669" },
+  { date: "16/09/2022", result: "703" },
+  { date: "01/09/2022", result: "332" },
+  { date: "16/08/2022", result: "583" },
+  { date: "01/08/2022", result: "594" },
+  { date: "16/07/2022", result: "405" },
+  { date: "01/07/2022", result: "417" },
+  { date: "16/06/2022", result: "807" },
+  { date: "01/06/2022", result: "196" },
+  { date: "16/05/2022", result: "012" },
+  { date: "01/05/2022", result: "642" },
+  { date: "16/04/2022", result: "919" },
+  { date: "01/04/2022", result: "618" },
+  { date: "16/03/2022", result: "867" },
+  { date: "01/03/2022", result: "905" },
+  { date: "17/02/2022", result: "597" },
+  { date: "01/02/2022", result: "308" },
+  { date: "17/01/2022", result: "159" }
+
+];
+/* Static + Firebase Thai 3D ကို အစမှာတင်ပြ */
+
+if (
+  typeof window.loadThai3DHistory ===
+  "function"
+) {
+  window.loadThai3DHistory();
+}
+  const serverTimeRef =
+  ref(db, ".info/serverTimeOffset");
+
+onValue(serverTimeRef, (snapshot) => {
+
+  window.serverTimeOffset =
+    snapshot.val() || 0;
+
+  if (
+    typeof checkResult === "function"
+  ) {
+    checkResult();
+  }
+  if (
+  typeof load2DResults === "function"
+) {
+  load2DResults();
+}
+
+  if (
+    typeof updateTimeCards === "function"
+  ) {
+    updateTimeCards();
+  }
+
+});
+
+const connectedRef =
+  ref(db, ".info/connected");
+
+onValue(connectedRef, (snapshot) => {
+
+  window.firebaseConnected =
+    snapshot.val() === true;
+
+  if (!window.firebaseConnected) {
+
+    window.internetReady = false;
+
+    animationToken++;
+
+    stopResultJump();
+
+    numberElement.classList.remove("fade-out");
+
+    numberElement.style.transform =
+      "translateY(0)";
+
+    currentReveal =
+      "OFFLINE";
+
+    numberElement.textContent =
+      "--";
+
+  } else {
+
+    checkRealInternet();
+
+  }
+
+});
+
+/* =========================
+   FIREBASE RESULTS
+========================= */
+
+const resultsRef =
+  ref(db, "results");
+  /* =========================
+   FIREBASE HISTORY
+========================= */
+
+const historyRef =
+  ref(db, "history/2D");
+
+onValue(historyRef, (snapshot) => {
+
+  const data =
+    snapshot.val();
+
+  window.firebaseHistory =
+    data || {};
+
+  if (
+    typeof load2DResults === "function"
+  ) {
+    load2DResults();
+  }
+
+});
+  
+/* =========================
+   SAVE 2D RESULT TO HISTORY
+   ONE TIME ONLY
+========================= */
+
+let historySaveLock = {};
+let historyAutoSaveRunning = false;
+window.save2DResultToHistory = async function(drawName, result) {
+
+  if (
+    !window.firebaseConnected ||
+    !window.internetReady
+  ) {
+    return;
+  }
+
+  if (!result || result === "--") {
+    return;
+  }
+
+  const now =
+    new Date(syncedNow());
+
+  const pad =
+    n => String(n).padStart(2, "0");
+
+  const today =
+    `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+
+  const historyKey =
+    drawName.replace(" ", "");
+
+  const lockKey =
+    today + "_" + historyKey;
+
+  /* တစ်ကြိမ်ပဲလုပ် */
+  if (historySaveLock[lockKey]) {
+    return;
+  }
+
+  historySaveLock[lockKey] = true;
+
+  try {
+
+    const historyRef =
+      ref(
+        db,
+        `history/2D/${today}/${historyKey}`
+      );
+
+    /* History ထဲမှာ ရှိပြီးသားလား စစ် */
+    const snapshot =
+      await get(historyRef);
+
+    /* ရှိပြီးသားဆို ထပ်မရေး */
+    if (snapshot.exists()) {
+      return;
+    }
+
+    /* Results ထဲက Result ကို History ထဲသိမ်း */
+    await set(
+      historyRef,
+      String(result).padStart(2, "0")
+    );
+
+  } catch (error) {
+
+    console.error(
+      "History save error:",
+      error
+    );
+
+    delete historySaveLock[lockKey];
+
+  }
+
+};
+/* =========================
+   SUNDAY DUBAI 3D AUTO SAVE
+========================= */
+
+async function saveSundayDubai3DHistory() {
+
+  if (
+    !window.firebaseConnected ||
+    !window.internetReady
+  ) {
+    return;
+  }
+
+  const now = new Date(syncedNow());
+
+  // Sunday only
+  if (now.getDay() !== 0) {
+    return;
+  }
+
+  const currentSeconds =
+    now.getHours() * 3600 +
+    now.getMinutes() * 60 +
+    now.getSeconds();
+
+  // 9:00 PM မရောက်သေးရင် မသိမ်း
+  if (currentSeconds < 21 * 3600) {
+    return;
+  }
+
+  const result5 = getDrawResult("5:00 PM");
+  const result7 = getDrawResult("7:00 PM");
+  const result9 = getDrawResult("9:00 PM");
+
+  if (
+    !result5 || result5 === "--" ||
+    !result7 || result7 === "--" ||
+    !result9 || result9 === "--"
+  ) {
+    return;
+  }
+
+  const dubai3D =
+    result5.charAt(result5.length - 1) +
+    result7.charAt(result7.length - 1) +
+    result9.charAt(result9.length - 1);
+
+  const pad = n =>
+    String(n).padStart(2, "0");
+
+  const today =
+    `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+
+  const history3DRef =
+  ref(db, `history/Dubai3D/${today}`);
+  try {
+
+    const snapshot =
+      await get(history3DRef);
+
+    if (snapshot.exists()) {
+      return;
+    }
+
+    await set(
+      history3DRef,
+      dubai3D
+    );
+
+  } catch (error) {
+
+    console.error(
+      "Dubai 3D history save error:",
+      error
+    );
+
+  }
+}
+setInterval(
+  saveSundayDubai3DHistory,
+  1000
+);
+/* =========================
+   AUTO SAVE PASSED RESULTS
+========================= */
+
+async function saveAvailableTodayResults() {
+
+  // တစ်ချိန်တည်းမှာ save process နှစ်ခု မပြေးစေရန်
+  if (historyAutoSaveRunning) {
+    return;
+  }
+
+  if (
+    !window.firebaseConnected ||
+    !window.internetReady
+  ) {
+    return;
+  }
+    // Wednesday = 2D Closed
+  if (is2DClosedDay() || isHoliday2D()) {
+  return;
+}
+
+  historyAutoSaveRunning = true;
+
+  try {
+
+    const now =
+      new Date(syncedNow());
+
+    const currentSeconds =
+      now.getHours() * 3600 +
+      now.getMinutes() * 60 +
+      now.getSeconds();
+
+    for (const draw of drawTimes) {
+
+      // အချိန်မရောက်သေးရင် မသိမ်း
+      if (currentSeconds < draw.seconds) {
+        continue;
+      }
+
+      const result =
+        getDrawResult(draw.name);
+
+      if (
+        !result ||
+        result === "--"
+      ) {
+        continue;
+      }
+
+      await window.save2DResultToHistory(
+        draw.name,
+        result
+      );
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Auto history save error:",
+      error
+    );
+
+  } finally {
+
+    historyAutoSaveRunning = false;
+
+  }
+}
+setInterval(
+  saveAvailableTodayResults,
+  1000
+);
+
+onValue(resultsRef, (snapshot) => {
+
+  const data =
+    snapshot.val();
+
+
+  if (!data) return;
+
+
+  /*
+    Firebase results ကို
+    app တစ်ခုလုံးသုံးနိုင်အောင် သိမ်း
+  */
+
+  window.firebaseResults =
+    data;
+
+
+  /*
+    Card တွေကို update
+  */
+
+  if (
+    typeof updateTimeCards === "function"
+  ) {
+    updateTimeCards();
+  }
+
+
+  /*
+    Main result ကို
+    checkResult() က draw time
+    အလိုက် ထိန်းမယ်
+  */
+
+  if (
+    typeof checkResult === "function"
+  ) {
+    checkResult();
+  }
+
+});
+
+/* =========================
+   FIREBASE DUBAI 3D HISTORY
+========================= */
+
+/* =========================
+   FIREBASE DUBAI 3D HISTORY
+   STABLE - NO FLICKERING FIX
+========================= */
+
+const dubai3DHistoryRef = ref(db, "history/Dubai3D");
+let lastDubai3DHistoryData = "";
+
+onValue(dubai3DHistoryRef, (snapshot) => {
+  const data = snapshot.val() || {};
+  const dataString = JSON.stringify(data);
+
+  // Data လုံးဝ မပြောင်းလဲသေးရင် DOM ကို လုံးဝ မတို့ပါနဲ့ (တုန်ခြင်းကို ကာကွယ်ရန်)
+  if (dataString === lastDubai3DHistoryData) {
+    return;
+  }
+  lastDubai3DHistoryData = dataString;
+
+  displayDubai3DHistory(data);
+});
+
+function displayDubai3DHistory(data) {
+
+  const container =
+    document.getElementById(
+      "firebaseDubai3DHistory"
+    );
+
+  if (!container) return;
+
+  const dates =
+    Object.keys(data).sort(
+      (a, b) => b.localeCompare(a)
+    );
+
+  dates.forEach(dateKey => {
+
+    const result =
+      String(data[dateKey])
+        .padStart(3, "0");
+
+    /* =========================
+       ရှိပြီးသား CARD ရှာ
+    ========================= */
+
+    let card =
+      container.querySelector(
+        `.history-card[data-history-date="${dateKey}"]`
+      );
+
+
+    /* =========================
+       မရှိသေးရင် တစ်ခါပဲ CREATE
+    ========================= */
+
+    if (!card) {
+
+      card =
+        document.createElement("div");
+
+      card.className =
+        "history-card";
+
+      card.dataset.historyDate =
+        dateKey;
+
+      card.innerHTML = `
+        <div class="history-top">
+          <span>Date</span>
+          <span>3D</span>
+        </div>
+
+        <div class="history-bottom">
+          <span>${dateKey}</span>
+          <strong></strong>
+        </div>
+      `;
+
+      /*
+        အသစ်ဝင်လာတဲ့ card ကို
+        အပေါ်ဆုံးမှာ တစ်ခါပဲ ထည့်
+      */
+      container.insertBefore(
+        card,
+        container.firstChild
+      );
+    }
+
+
+    /* =========================
+       RESULT UPDATE
+       Card ကို မဖျက်
+    ========================= */
+
+    const resultElement =
+      card.querySelector(
+        ".history-bottom strong"
+      );
+
+    if (resultElement) {
+
+      resultElement.textContent =
+        result;
+
+    }
+
+  });
+
+}
+
+</script>
+<!-- =========================
+     THAI 3D HISTORY
+========================= -->
+
+<section id="thai3DHistory" class="history-page">
+
+  <header class="history-header">
+
+    <button
+      class="back-btn"
+      onclick="closeThai3DHistory()">
+    </button>
+
+    <div class="history-title">
+      MM 3D Results
+    </div>
+
+  </header>
+
+  <div
+    id="thai3DList"
+    class="history-list">
+  </div>
+
+</section>
+</body>
+  </html>
