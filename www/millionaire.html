@@ -2477,42 +2477,24 @@ function updateSundayDubai3D() {
 
 function updateTimeCards() {
 
-  const now = new Date(syncedNow());
-
-const currentSeconds =
-  now.getHours() * 3600 +
-  now.getMinutes() * 60 +
-  now.getSeconds();
-
   const cards =
     document.querySelectorAll(
       ".container .time-card"
     );
 
-  drawTimes.forEach((draw, index) => {
-
-    const card = cards[index];
-
-    if (!card) return;
+  cards.forEach(card => {
 
     const resultBox =
       card.querySelector(".result");
 
     if (!resultBox) return;
 
-    if (currentSeconds >= draw.seconds) {
-
-      resultBox.textContent = getDrawResult(draw.name);
-
-    } else {
-
-      resultBox.textContent = "";
-
-    }
+    // Main page မှာ 2D result မပြ
+    resultBox.textContent = "";
 
   });
-}
 
+}
 
 
 
@@ -2677,33 +2659,33 @@ function checkResult() {
   // WEDNESDAY = 2D CLOSED
   // =========================
 
-  if (is2DClosedDay() || isHoliday2D())  {
+  if (is2DClosedDay() || isHoliday2D()) {
 
-    animationToken++;
+  animationToken++;
+  stopResultJump();
 
-    stopResultJump();
+  numberElement.classList.remove(
+    "fade-out",
+    "random-fade-out",
+    "random-fade-in",
+    "pre-result-loop"
+  );
 
-    numberElement.classList.remove(
-      "fade-out",
-      "random-fade-out",
-      "random-fade-in",
-      "pre-result-loop"
-    );
+  numberElement.style.transform = "translateY(0)";
+  currentReveal = "2D_CLOSED";
 
-    numberElement.style.transform =
-      "translateY(0)";
+  // Main Page Result အားလုံး အလွတ်
+  document.querySelectorAll(
+    ".container .time-card .result"
+  ).forEach(el => {
+    el.textContent = "";
+  });
 
-    currentReveal =
-      "2D_CLOSED";
+  // Main Number လည်း အလွတ်
+  numberElement.textContent = "--";
 
-    numberElement.textContent =
-      "--";
-
-    updateTimeCards();
-
-    return;
-  }
-
+  return;
+}
   if (
     window.internetReady !== true ||
     window.firebaseConnected !== true
