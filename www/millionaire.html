@@ -2477,27 +2477,42 @@ function updateSundayDubai3D() {
 
 function updateTimeCards() {
 
+  const now = new Date(syncedNow());
+
+  const currentSeconds =
+    now.getHours() * 3600 +
+    now.getMinutes() * 60 +
+    now.getSeconds();
+
   const cards =
     document.querySelectorAll(
       ".container .time-card"
     );
 
-  cards.forEach(card => {
+  drawTimes.forEach((draw, index) => {
+
+    const card = cards[index];
+
+    if (!card) return;
 
     const resultBox =
       card.querySelector(".result");
 
     if (!resultBox) return;
 
-    // Main page မှာ 2D result မပြ
-    resultBox.textContent = "";
+    if (currentSeconds >= draw.seconds) {
+
+      resultBox.textContent =
+        getDrawResult(draw.name);
+
+    } else {
+
+      resultBox.textContent = "";
+
+    }
 
   });
-
 }
-
-
-
 
 /* =========================
    RESULT JUMP
