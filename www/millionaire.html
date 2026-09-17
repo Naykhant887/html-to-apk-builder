@@ -2057,9 +2057,7 @@ function getDrawResult(drawName) {
 function randomNumber() {
 
   const timeSlot =
-    Math.floor(
-      syncedNow() / 5000
-    );
+    get7SecondSlot();
 
   let x =
     Math.imul(
@@ -2106,7 +2104,10 @@ let testDrawStartTime = Date.now();
 let animationToken = 0;
 let lastRandomAnimation = 0;
 let currentReveal = "";
-
+let fadeTimer1 = null;
+let fadeTimer2 = null;
+let fadeTimer3 = null;
+let fadeTimer4 = null;
 
 window.firebaseConnected = false;
 window.serverTimeOffset = 0;
@@ -2147,7 +2148,15 @@ function syncedNow() {
   );
 }
 
+/* =========================
+   SHARED 7 SECOND SLOT
+   MAIN + UPDATE TIME
+   အချိန်ကွက်တိတူ
+========================= */
 
+function get7SecondSlot() {
+  return Math.floor(syncedNow() / 7000);
+}
 function is2DClosedDay() {
   const now = new Date(syncedNow());
 
@@ -2604,66 +2613,59 @@ function showFinalResult(draw) {
 
 function animateRandom() {
 
-  if (
-    window.internetReady !== true ||
-    window.firebaseConnected !== true
-  ) {
-    animationToken++;
-
-    stopResultJump();
-
-    numberElement.classList.remove("random-fade-out");
-    numberElement.classList.remove("random-fade-in");
-
-    numberElement.textContent = "--";
-
-    return;
-  }
+  clearTimeout(fadeTimer1);
+  clearTimeout(fadeTimer2);
+  clearTimeout(fadeTimer3);
+  clearTimeout(fadeTimer4);
 
   animationToken++;
-
   const token = animationToken;
 
-  // ဒီ 5 seconds အတွင်း ဂဏန်းတစ်ခုတည်း
   const result = randomNumber();
 
-  numberElement.classList.remove("random-fade-out");
-  numberElement.classList.remove("random-fade-in");
+  numberElement.classList.remove(
+    "random-fade-out",
+    "random-fade-in"
+  );
 
+  numberElement.style.opacity = "1";
   numberElement.textContent = result;
 
-  // 1st Fade Out
-  setTimeout(() => {
+  // Fade-out 1
+  fadeTimer1 = setTimeout(() => {
     if (token !== animationToken) return;
 
     numberElement.classList.remove("random-fade-in");
     numberElement.classList.add("random-fade-out");
   }, 2000);
 
-  // 1st Fade In
-  setTimeout(() => {
+  // ပြန်ပေါ်
+  fadeTimer2 = setTimeout(() => {
     if (token !== animationToken) return;
 
     numberElement.classList.remove("random-fade-out");
     numberElement.classList.add("random-fade-in");
+    numberElement.style.opacity = "1";
   }, 2500);
 
-  // 2nd Fade Out
-  setTimeout(() => {
+  // Fade-out 2
+  fadeTimer3 = setTimeout(() => {
     if (token !== animationToken) return;
 
     numberElement.classList.remove("random-fade-in");
     numberElement.classList.add("random-fade-out");
   }, 4000);
 
-  // 2nd Fade In
-  setTimeout(() => {
+  // ပြန်ပေါ်
+  fadeTimer4 = setTimeout(() => {
     if (token !== animationToken) return;
 
     numberElement.classList.remove("random-fade-out");
     numberElement.classList.add("random-fade-in");
+    numberElement.style.opacity = "1";
   }, 4500);
 }
+
 /* =========================
    MAIN CHECK
 ========================= */
@@ -2853,9 +2855,7 @@ function checkResult() {
 
 
   const currentRandomSlot =
-  Math.floor(
-    syncedNow() / 5000
-  );
+  get7SecondSlot();
 
 
 if (
@@ -4125,7 +4125,58 @@ function getCurrentDateTime() {
   return `${year}-${month}-${day} ${pad(hours)}:${minutes}:${seconds} ${ampm}`;
 }
 
+/* =========================
+   UPDATE TIME - EVERY 7 SECONDS
+========================= */
 
+/* =========================
+   UPDATE TIME
+   SAME SLOT AS MAIN NUMBER
+========================= */
+
+function get7SecondUpdateTime() {
+
+  const slot =
+    get7SecondSlot();
+
+  const slotStart =
+    slot * 7000;
+
+  const d =
+    new Date(
+      slotStart +
+      (6 * 60 + 30) * 60 * 1000
+    );
+
+  const pad = n =>
+    String(n).padStart(2, "0");
+
+  const year =
+    d.getUTCFullYear();
+
+  const month =
+    pad(d.getUTCMonth() + 1);
+
+  const day =
+    pad(d.getUTCDate());
+
+  let hours =
+    d.getUTCHours();
+
+  const minutes =
+    pad(d.getUTCMinutes());
+
+  const seconds =
+    pad(d.getUTCSeconds());
+
+  const ampm =
+    hours >= 12 ? "PM" : "AM";
+
+  hours =
+    hours % 12 || 12;
+
+  return `${year}-${month}-${day} ${pad(hours)}:${minutes}:${seconds} ${ampm}`;
+}
 function updateTime() {
 
   const updated =
@@ -4151,7 +4202,7 @@ function updateTime() {
         color:#22c55e;
         font-weight:700;
         margin-right:5px;
-      ">✓</span>Update : ${getCurrentDateTime()}`;
+      ">✓</span>Update : ${get7SecondUpdateTime()}`;
 
     return;
   }
@@ -4162,7 +4213,7 @@ function updateTime() {
   ========================= */
 
   updated.textContent =
-    `Update : ${getCurrentDateTime()}`;
+    `Update : ${get7SecondUpdateTime()}`;
 }
 
 
