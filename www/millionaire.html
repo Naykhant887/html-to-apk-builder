@@ -271,142 +271,7 @@ body {
 }
 
 
-/* =========================
-   VERY SMALL PHONES
-   320px - 360px
-========================= */
 
-@media (max-width: 360px) {
-
-  .topbar {
-    height: 64px;
-  }
-
-  .title {
-    font-size: 23px;
-  }
-
-  .container {
-    padding-top: 30px;
-  }
-
-  .number {
-    font-size: 115px;
-  }
-
-  .updated {
-    font-size: 16px;
-  }
-
-  .time-card {
-    height: 105px;
-  }
-
-  .time-card strong {
-    font-size: 21px;
-  }
-
-  .menu-grid button {
-    font-size: 15px;
-  }
-}
-
-
-/* =========================
-   NORMAL PHONES
-   361px - 600px
-========================= */
-
-@media (min-width: 361px) and (max-width: 600px) {
-
-  .title {
-    font-size: 18px;
-  }
-
-  .number {
-    font-size: clamp(125px, 25vw, 156px);
-  }
-
-  .updated {
-    font-size: clamp(18px, 4.8vw, 30px);
-  }
-}
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (min-width: 601px) {
-
-  .container {
-    max-width: 720px;
-  }
-
-  .time-card {
-    height: 140px;
-  }
-}
-
-
-/* =========================
-   LANDSCAPE PHONE
-========================= */
-
-@media (
-  max-height: 500px
-) and (
-  orientation: landscape
-) {
-
-  .topbar {
-    height: 60px;
-  }
-
-  .container {
-    padding-top: 20px;
-  }
-
-  .number {
-    font-size: 100px;
-    margin-bottom: 15px;
-  }
-
-  .updated {
-    margin-bottom: 15px;
-  }
-
-  .time-card {
-    height: 100px;
-  }
-
-  .menu-grid button {
-    height: 65px;
-  }
-}
-.number {
-  color: #3f719c;
-
-  font-size: clamp(115px, 25vw, 180px);
-  line-height: .9;
-  font-weight: 700;
-
-  letter-spacing: -9px;
-
-  opacity: 1;
-
-  transform: scale(1);
-
-  transition:
-    opacity 1.2s ease-in-out,
-    transform 1.2s ease-in-out;
-}
-
-.number.fade-out {
-  opacity: 0.08;
-
-  transform: scale(0.98);
-}
 /* =========================
    DUBAI 3D - FINAL SIZE
 ========================= */
@@ -545,44 +410,6 @@ body {
 
 
 /* PHONE */
-@media (max-width: 600px) {
-
-  .history-header {
-    height: 70px;
-  }
-
-  .back-btn {
-    width: 65px;
-    font-size: 40px;
-  }
-
-  .history-title {
-    font-size: 25px;
-  }
-
-  .history-list {
-    padding: 13px 13px 30px;
-  }
-
-  .history-card {
-    height: 120px;
-    margin-bottom: 20px;
-    padding: 14px 20px;
-  }
-
-  .history-top {
-    font-size: 20px;
-  }
-
-  .history-bottom {
-    font-size: 24px;
-  }
-
-  .history-bottom strong {
-    font-size: 28px;
-  }
-}
-
 
 /* SMALL PHONE */
 
@@ -590,25 +417,7 @@ body {
 
 /* Small phone */
 
-@media (max-width: 390px) {
 
-  .history-title {
-    font-size: 22px;
-  }
-
-  .history-top,
-  .history-bottom {
-    font-size: 27px;
-  }
-
-  .history-bottom strong {
-    font-size: 27px;
-  }
-
-  .history-card {
-    min-height: 130px;
-  }
-}
   .twoD-date {
   width: fit-content;
 
@@ -916,62 +725,7 @@ body {
 
 
 
-/* =========================
-   SMALL PHONE
-========================= */
 
-@media (max-width: 390px) {
-
-  .container {
-    padding: 15px 10px 45px;
-  }
-
-  .hero {
-    min-height: 195px;
-  }
-
-  .number {
-    font-size: 95px;
-  }
-
-  .updated {
-    font-size: 13px;
-    margin-top: 15px;
-  }
-
-  .sunday-dubai-3d {
-    width: 112px;
-    height: 74px;
-
-    top: -15px;
-    right: 0;
-  }
-
-  .sunday-dubai-title {
-    font-size: 16px;
-  }
-
-  #sundayDubaiResult {
-    font-size: 22px;
-  }
-
-  .container > .time-grid .time-card {
-    height: 98px;
-  }
-
-  .container > .time-grid .time-card strong {
-    font-size: 22px;
-  }
-
-  .container > .time-grid .result {
-    font-size: 23px;
-  }
-
-  .menu-grid button {
-    height: 60px;
-    font-size: 14px;
-  }
-}
 /* =========================
    2D RESULTS HEADER - SMALL
 ========================= */
@@ -1229,11 +983,11 @@ body {
   display: block !important;
 }
 #firebaseDubai3DHistory {
-  margin-bottom: -3px !important;
+  margin-bottom: 0px !important;
 }
 
 #firebaseDubai3DHistory .history-card {
-  margin-bottom: -3px !important;
+  margin-bottom: 20px !important;
 }
 #dubaiHistory > .history-card {
   width: calc(100% - 26px) !important;
@@ -1311,18 +1065,7 @@ body {
   }
 }
 
-@media (max-width: 390px) {
 
-  .holiday-card {
-    min-height: 80px;
-    padding: 0 17px;
-  }
-
-  .holiday-date,
-  .holiday-name {
-    font-size: 17px;
-  }
-}
 @media (max-width: 390px) {
 
   .holiday-card {
@@ -1492,8 +1235,451 @@ body {
   font-size: 27px;
   font-weight: 500;
 }
+/* =========================
+   DUBAI 3D HISTORY CARD - SMALL
+========================= */
 
-  </style>
+
+
+/* =========================
+   DUBAI 3D HISTORY - EVEN GAP
+========================= */
+
+#firebaseDubai3DHistory {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* =====================================================
+   RESPONSIVE SCALE SYSTEM
+   REFERENCE PHONE = 411px
+   411px မှာ မူရင်း UI အတိုင်း
+   ဖုန်းသေး/ကြီးရင် အချိုးကျ Scale ဖြစ်မယ်
+===================================================== */
+
+:root {
+  --ui-scale: 1;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+  height: calc(50px * var(--ui-scale));
+  padding-left: calc(12px * var(--ui-scale));
+  padding-right: calc(12px * var(--ui-scale));
+}
+
+.title {
+  font-size: calc(20px * var(--ui-scale));
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+  width: 100%;
+  max-width: 720px;
+
+  padding:
+    calc(30px * var(--ui-scale))
+    calc(12px * var(--ui-scale))
+    calc(70px * var(--ui-scale));
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  width: 100%;
+
+  min-height:
+    calc(210px * var(--ui-scale));
+
+  position: relative;
+
+  text-align: center;
+}
+
+
+/* =========================
+   MAIN NUMBER
+========================= */
+
+.number {
+  font-size:
+    calc(110px * var(--ui-scale)) !important;
+
+  line-height: .9;
+
+  font-weight: 700;
+
+  letter-spacing:
+    calc(-7px * var(--ui-scale));
+
+  margin: 0;
+
+  padding-top:
+    calc(10px * var(--ui-scale));
+}
+
+
+/* =========================
+   UPDATE
+========================= */
+
+.updated {
+  font-size:
+    calc(18px * var(--ui-scale)) !important;
+
+  line-height: 1.2;
+
+  margin-top:
+    calc(18px * var(--ui-scale));
+
+  margin-bottom:
+    calc(14px * var(--ui-scale));
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   DUBAI 3D
+========================= */
+
+.sunday-dubai-3d {
+  width:
+    calc(115px * var(--ui-scale)) !important;
+
+  height:
+    calc(75px * var(--ui-scale)) !important;
+
+  top:
+    calc(-15px * var(--ui-scale)) !important;
+
+  right: 0 !important;
+
+  padding:
+    calc(6px * var(--ui-scale));
+
+  border-radius:
+    calc(8px * var(--ui-scale));
+}
+
+.sunday-dubai-title {
+  font-size:
+    calc(18px * var(--ui-scale)) !important;
+}
+
+#sundayDubaiResult {
+  font-size:
+    calc(20px * var(--ui-scale)) !important;
+}
+
+
+/* =========================
+   TIME GRID
+========================= */
+
+.container > .time-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    calc(10px * var(--ui-scale))
+    calc(12px * var(--ui-scale));
+
+  margin-top: calc(-30px * var(--ui-scale));
+}
+
+
+/* =========================
+   TIME CARD
+========================= */
+
+.container > .time-grid .time-card {
+  width: 100%;
+
+  height:
+    calc(80px * var(--ui-scale)) !important;
+
+  border-radius:
+    calc(11px * var(--ui-scale));
+}
+
+.container > .time-grid .time-card strong {
+  height: 48%;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size:
+    calc(20px * var(--ui-scale)) !important;
+}
+
+.container > .time-grid .result {
+  height: 52%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size:
+    calc(21px * var(--ui-scale)) !important;
+}
+
+
+/* =========================
+   BOTTOM MENU
+========================= */
+
+.menu-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    calc(10px * var(--ui-scale));
+
+  margin-top:
+    calc(25px * var(--ui-scale));
+
+  padding: 0;
+}
+
+.menu-grid button {
+  width: 100%;
+
+  height:
+    calc(65px * var(--ui-scale)) !important;
+
+  border-radius:
+    calc(10px * var(--ui-scale));
+
+  font-size:
+    calc(16px * var(--ui-scale)) !important;
+
+  padding: 0;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+.history-header {
+  height:
+    calc(55px * var(--ui-scale));
+}
+
+.back-btn {
+  width:
+    calc(60px * var(--ui-scale)) !important;
+
+  height:
+    calc(55px * var(--ui-scale)) !important;
+}
+
+.history-title {
+  font-size:
+    calc(25px * var(--ui-scale)) !important;
+}
+
+.history-list {
+  width: 100%;
+
+  padding:
+    calc(13px * var(--ui-scale))
+    calc(13px * var(--ui-scale))
+    calc(30px * var(--ui-scale));
+}
+
+.history-card {
+  width: 100%;
+
+  height:
+    calc(120px * var(--ui-scale)) !important;
+
+  margin-bottom:
+    calc(20px * var(--ui-scale)) !important;
+
+  padding:
+    calc(14px * var(--ui-scale))
+    calc(20px * var(--ui-scale)) !important;
+
+  border-radius:
+    calc(15px * var(--ui-scale));
+}
+
+.history-top {
+  height:
+    calc(32px * var(--ui-scale));
+
+  font-size:
+    calc(22px * var(--ui-scale));
+}
+
+.history-bottom {
+  height:
+    calc(55px * var(--ui-scale));
+
+  margin-top:
+    calc(25px * var(--ui-scale));
+
+  font-size:
+    calc(27px * var(--ui-scale));
+}
+
+.history-bottom strong {
+  font-size:
+    calc(35px * var(--ui-scale));
+}
+
+
+/* =========================
+   HOLIDAYS
+========================= */
+
+.holiday-list {
+  padding:
+    calc(13px * var(--ui-scale))
+    calc(13px * var(--ui-scale))
+    calc(30px * var(--ui-scale));
+}
+
+.holiday-card {
+  min-height:
+    calc(85px * var(--ui-scale));
+
+  margin-bottom:
+    calc(20px * var(--ui-scale));
+
+  padding:
+    0 calc(20px * var(--ui-scale));
+
+  border-radius:
+    calc(15px * var(--ui-scale));
+}
+
+.holiday-date,
+.holiday-name {
+  font-size:
+    calc(21px * var(--ui-scale));
+}
+
+
+/* =========================
+   2D DATE
+========================= */
+
+.twoD-date {
+  margin:
+    calc(50px * var(--ui-scale))
+    auto;
+
+  padding:
+    calc(8px * var(--ui-scale))
+    calc(18px * var(--ui-scale));
+
+  border-radius:
+    calc(40px * var(--ui-scale));
+
+  font-size:
+    calc(21px * var(--ui-scale));
+}
+
+
+/* =========================
+   THAI 3D HISTORY
+========================= */
+
+#thai3DHistory .history-card {
+  height:
+    calc(90px * var(--ui-scale));
+
+  margin-bottom:
+    calc(12px * var(--ui-scale));
+
+  padding:
+    calc(10px * var(--ui-scale))
+    calc(20px * var(--ui-scale));
+
+  border-radius:
+    calc(8px * var(--ui-scale));
+}
+
+#thai3DHistory .history-top {
+  height:
+    calc(28px * var(--ui-scale));
+
+  font-size:
+    calc(18px * var(--ui-scale));
+}
+
+#thai3DHistory .history-bottom {
+  height:
+    calc(38px * var(--ui-scale));
+
+  margin-top:
+    calc(4px * var(--ui-scale));
+
+  font-size:
+    calc(21px * var(--ui-scale));
+}
+
+#thai3DHistory .history-bottom strong {
+  font-size:
+    calc(27px * var(--ui-scale));
+}
+/* =========================
+   DUBAI 3D HISTORY - SMALLER
+========================= */
+
+#dubaiHistory .history-card {
+  height: calc(100px * var(--ui-scale)) !important;
+  margin-bottom: calc(14px * var(--ui-scale)) !important;
+  padding: calc(10px * var(--ui-scale))
+           calc(16px * var(--ui-scale)) !important;
+  border-radius: calc(12px * var(--ui-scale));
+}
+
+#dubaiHistory .history-top {
+  height: calc(27px * var(--ui-scale));
+  font-size: calc(18px * var(--ui-scale)) !important;
+}
+
+#dubaiHistory .history-bottom {
+  height: calc(45px * var(--ui-scale));
+  margin-top: calc(12px * var(--ui-scale));
+  font-size: calc(21px * var(--ui-scale)) !important;
+}
+
+#dubaiHistory .history-bottom strong {
+  font-size: calc(24px * var(--ui-scale)) !important;
+}
+</style>
   
 </head>
 
@@ -2054,35 +2240,24 @@ function getDrawResult(drawName) {
 ========================= */
 
 
-function randomNumber() {
+function randomNumber(seed) {
 
-  const timeSlot =
-    get7SecondSlot();
+  let hash = 0;
 
-  let x =
-    Math.imul(
-      timeSlot ^ 0x6D2B79F5,
-      0x85EBCA6B
-    );
+  for (let i = 0; i < seed.length; i++) {
+    hash =
+      ((hash << 5) - hash) +
+      seed.charCodeAt(i);
 
-  x ^= x >>> 13;
+    hash |= 0;
+  }
 
-  x =
-    Math.imul(
-      x,
-      0xC2B2AE35
-    );
+  hash = Math.abs(hash);
 
-  x ^= x >>> 16;
-
-  const number =
-    (x >>> 0) % 100;
-
-  return String(number)
-    .padStart(2, "0");
+  return String(
+    hash % 100
+  ).padStart(2, "0");
 }
-
-
 const drawTimes = [
   { name: "11:00 AM", seconds: 11 * 3600 },
   { name: "1:00 PM", seconds: 13 * 3600 },
@@ -2111,25 +2286,9 @@ let fadeTimer4 = null;
 
 window.firebaseConnected = false;
 window.serverTimeOffset = 0;
+window.serverTimeReady = false;
 
 function syncedNow() {
-
-  const serverNow =
-    Date.now() + window.serverTimeOffset;
-
-  const MYANMAR_OFFSET_MINUTES =
-    6 * 60 + 30;
-
-  const deviceOffsetMinutes =
-    new Date(serverNow).getTimezoneOffset();
-
-  return (
-    serverNow +
-    (MYANMAR_OFFSET_MINUTES + deviceOffsetMinutes) *
-    60 *
-    1000
-  );
-}function syncedNow() {
 
   const serverNow =
     Date.now() + window.serverTimeOffset;
@@ -2223,13 +2382,30 @@ async function checkRealInternet() {
 
   } catch (error) {
 
+    console.warn(
+      "Internet check failed:",
+      error
+    );
+
     window.internetReady = false;
 
     animationToken++;
 
     stopResultJump();
 
-    numberElement.classList.remove("fade-out");
+    clearTimeout(fadeTimer1);
+    clearTimeout(fadeTimer2);
+    clearTimeout(fadeTimer3);
+    clearTimeout(fadeTimer4);
+
+    numberElement.classList.remove(
+      "fade-out",
+      "random-fade-out",
+      "random-fade-in",
+      "pre-result-loop"
+    );
+
+    numberElement.style.opacity = "1";
 
     numberElement.style.transform =
       "translateY(0)";
@@ -2238,16 +2414,18 @@ async function checkRealInternet() {
 
     numberElement.textContent = "--";
 
-  }
+  } finally {
 
-  internetCheckRunning = false;
+    internetCheckRunning = false;
+
+  }
 }
 
 checkRealInternet();
 
 setInterval(
   checkRealInternet,
-  2000
+  10000
 );
 window.addEventListener("offline", () => {
 
@@ -2278,6 +2456,9 @@ window.addEventListener("online", () => {
 /* =========================
    GET CURRENT DRAW
 ========================= */
+
+let randomSlotValue = "--";
+let randomSlotKey = "";
 
 function getCurrentDraw() {
   // ===== TEST MODE =====
@@ -2611,8 +2792,7 @@ function showFinalResult(draw) {
    RANDOM ANIMATION
 ========================= */
 
-function animateRandom() {
-
+function animateRandomNumber(value) {
   clearTimeout(fadeTimer1);
   clearTimeout(fadeTimer2);
   clearTimeout(fadeTimer3);
@@ -2621,17 +2801,18 @@ function animateRandom() {
   animationToken++;
   const token = animationToken;
 
-  const result = randomNumber();
-
   numberElement.classList.remove(
     "random-fade-out",
-    "random-fade-in"
+    "random-fade-in",
+    "pre-result-loop"
   );
 
+  // အသစ်ပြောင်းတဲ့ဂဏန်းကို အရင်ဆုံးမြင်ရအောင်
   numberElement.style.opacity = "1";
-  numberElement.textContent = result;
+  numberElement.style.transform = "translateY(0)";
+  numberElement.textContent = value;
 
-  // Fade-out 1
+  // Fade out #1
   fadeTimer1 = setTimeout(() => {
     if (token !== animationToken) return;
 
@@ -2645,10 +2826,17 @@ function animateRandom() {
 
     numberElement.classList.remove("random-fade-out");
     numberElement.classList.add("random-fade-in");
-    numberElement.style.opacity = "1";
+
+    // animation ပြီးရင် opacity ကို အတိအကျ 1 ထား
+    setTimeout(() => {
+      if (token === animationToken) {
+        numberElement.style.opacity = "1";
+      }
+    }, 550);
+
   }, 2500);
 
-  // Fade-out 2
+  // Fade out #2
   fadeTimer3 = setTimeout(() => {
     if (token !== animationToken) return;
 
@@ -2656,137 +2844,357 @@ function animateRandom() {
     numberElement.classList.add("random-fade-out");
   }, 4000);
 
-  // ပြန်ပေါ်
+  // နောက်ဆုံး ပြန်ပေါ်ပြီး မပျောက်တော့
   fadeTimer4 = setTimeout(() => {
     if (token !== animationToken) return;
 
     numberElement.classList.remove("random-fade-out");
     numberElement.classList.add("random-fade-in");
-    numberElement.style.opacity = "1";
+
+    setTimeout(() => {
+      if (token === animationToken) {
+        numberElement.classList.remove(
+          "random-fade-out",
+          "random-fade-in"
+        );
+
+        numberElement.style.opacity = "1";
+        numberElement.style.transform = "translateY(0)";
+      }
+    }, 550);
+
   }, 4500);
 }
+/* =========================
+   MAIN CHECK
+========================= */
 
 /* =========================
    MAIN CHECK
 ========================= */
 
 function checkResult() {
+
   updateSundayDubai3D();
-  // =========================
-  // WEDNESDAY = 2D CLOSED
-  // =========================
+  updateTimeCards();
 
-  if (is2DClosedDay() || isHoliday2D()) {
 
-  animationToken++;
-  stopResultJump();
+  /* =========================
+     CLOSED DAY
+  ========================= */
 
-  numberElement.classList.remove(
-    "fade-out",
-    "random-fade-out",
-    "random-fade-in",
-    "pre-result-loop"
-  );
-
-  numberElement.style.transform = "translateY(0)";
-  currentReveal = "2D_CLOSED";
-
-  // Main Page Result အားလုံး အလွတ်
-  document.querySelectorAll(
-    ".container .time-card .result"
-  ).forEach(el => {
-    el.textContent = "";
-  });
-
-  // Main Number လည်း အလွတ်
-  numberElement.textContent = "--";
-
-  return;
-}
   if (
-    window.internetReady !== true ||
-    window.firebaseConnected !== true
+    is2DClosedDay() ||
+    isHoliday2D()
   ) {
 
     animationToken++;
 
     stopResultJump();
 
-    numberElement.classList.remove("fade-out");
+    clearTimeout(fadeTimer1);
+    clearTimeout(fadeTimer2);
+    clearTimeout(fadeTimer3);
+    clearTimeout(fadeTimer4);
 
-    numberElement.style.transform =
-      "translateY(0)";
+    numberElement.classList.remove(
+      "fade-out",
+      "random-fade-out",
+      "random-fade-in",
+      "pre-result-loop"
+    );
 
-    currentReveal = "OFFLINE";
+    numberElement.style.opacity = "1";
+    numberElement.style.transform = "translateY(0)";
 
     numberElement.textContent = "--";
 
+    currentReveal = "2D_CLOSED";
+
     return;
   }
 
-  // ဒီအောက်က မူရင်း code အတိုင်းထားပါ
-  const current =
-    getCurrentDraw();
 
-  const now = new Date(syncedNow());
+  /* =========================
+     INTERNET / FIREBASE
+  ========================= */
 
-  const currentSeconds =
-    now.getHours() * 3600 +
-    now.getMinutes() * 60 +
+  if (
+    window.internetReady !== true ||
+    window.firebaseConnected !== true
+  ) {
+
+    numberElement.style.opacity = "1";
+    numberElement.style.transform = "translateY(0)";
+
+    numberElement.textContent = "--";
+
+    currentReveal = "OFFLINE";
+
+    return;
+  }
+
+
+  /* =========================
+     CURRENT TIME
+  ========================= */
+
+  const now =
+    new Date(syncedNow());
+
+  const hours =
+    now.getHours();
+
+  const minutes =
+    now.getMinutes();
+
+  const seconds =
     now.getSeconds();
 
-
-  /* =========================
-     9:00 PM နောက်ပိုင်း
-     Result နဲ့ပဲ ရပ်
-  ========================= */
-
-  const ninePM =
-    21 * 3600;
-
-  if (currentSeconds >= ninePM) {
-
-  stopResultJump();
-
-  currentReveal =
-    "DAY_FINISHED";
-
-  const result9 =
-    getDrawResult("9:00 PM");
-
-  numberElement.textContent =
-    result9;
-
-  updateTimeCards();
-
-  
-
-  return;
-}
+  const currentSeconds =
+    hours * 3600 +
+    minutes * 60 +
+    seconds;
 
 
   /* =========================
-     RESULT REVEAL
-     10:59:45 → 11:00
+     BEFORE 7:00 AM
   ========================= */
 
   if (
-    current &&
-    current.state === "revealing"
+    currentSeconds < 7 * 3600
+  ) {
+
+    stopResultJump();
+
+    numberElement.style.opacity = "1";
+    numberElement.style.transform = "translateY(0)";
+
+    numberElement.textContent = "--";
+
+    currentReveal = "WAITING";
+
+    return;
+  }
+
+
+  /* =========================
+     AFTER 9:00 PM
+  ========================= */
+
+  if (
+    currentSeconds >= 21 * 3600
+  ) {
+
+    const result =
+      getDrawResult("9:00 PM");
+
+    animationToken++;
+
+    stopResultJump();
+
+    clearTimeout(fadeTimer1);
+    clearTimeout(fadeTimer2);
+    clearTimeout(fadeTimer3);
+    clearTimeout(fadeTimer4);
+
+    numberElement.style.opacity = "1";
+    numberElement.style.transform = "translateY(0)";
+
+    numberElement.textContent =
+      result || "--";
+
+    currentReveal =
+      "9:00 PM:FINAL";
+
+    return;
+  }
+
+
+  /* =========================
+     FIND CURRENT DRAW
+  ========================= */
+
+  let activeDraw = null;
+
+  for (
+    const draw of drawTimes
+  ) {
+
+    /*
+      00 sec ကနေ
+      5 minutes အထိ
+      Final Result
+    */
+
+    if (
+      currentSeconds >= draw.seconds &&
+      currentSeconds < draw.seconds + 300
+    ) {
+
+      activeDraw = draw;
+
+      break;
+    }
+  }
+
+
+  /* =========================
+     FIND NEXT DRAW
+  ========================= */
+
+  let nextDraw = null;
+
+  for (
+    const draw of drawTimes
   ) {
 
     if (
-      currentReveal !==
-      current.draw.name
+      currentSeconds < draw.seconds
+    ) {
+
+      nextDraw = draw;
+
+      break;
+    }
+  }
+
+
+  /* =========================
+     PRE-RESULT
+     42 / 49 / 56
+  ========================= */
+
+  if (
+    nextDraw &&
+    currentSeconds >= nextDraw.seconds - 60 &&
+    currentSeconds < nextDraw.seconds
+  ) {
+
+    const secondsBeforeDraw =
+      currentSeconds -
+      (nextDraw.seconds - 60);
+
+
+    /*
+      42 / 49 / 56
+      Pre-Result
+    */
+
+    if (
+      secondsBeforeDraw >= 42
+    ) {
+
+      const firebaseResult =
+        getDrawResult(nextDraw.name);
+
+
+      if (
+        firebaseResult &&
+        firebaseResult !== "--"
+      ) {
+
+        const eventKey =
+          `${nextDraw.name}:PRE`;
+
+
+        /*
+          42 sec မှာ တစ်ကြိမ်ပဲ
+          Pre-Result စမယ်
+
+          49 / 56 မှာ
+          ဂဏန်း မပြောင်းပါ
+        */
+
+        if (
+          currentReveal !== eventKey
+        ) {
+
+          currentReveal =
+            eventKey;
+
+          animationToken++;
+
+          clearTimeout(fadeTimer1);
+          clearTimeout(fadeTimer2);
+          clearTimeout(fadeTimer3);
+          clearTimeout(fadeTimer4);
+
+          stopResultJump();
+
+          numberElement.textContent =
+            firebaseResult;
+
+          numberElement.style.opacity =
+            "1";
+
+          numberElement.style.transform =
+            "translateY(0)";
+
+          void numberElement.offsetWidth;
+
+          numberElement.classList.add(
+            "pre-result-loop"
+          );
+        }
+      }
+
+      return;
+    }
+  }
+
+
+  /* =========================
+     FINAL RESULT
+     00 SEC → 5 MINUTES FIXED
+  ========================= */
+
+  if (
+    activeDraw &&
+    currentSeconds >= activeDraw.seconds &&
+    currentSeconds < activeDraw.seconds + 300
+  ) {
+
+    const eventKey =
+      `${activeDraw.name}:FINAL`;
+
+
+    /*
+      5 မိနစ်အတွင်း
+      Final Result မပြောင်း
+    */
+
+    if (
+      currentReveal !== eventKey
     ) {
 
       currentReveal =
-        current.draw.name;
+        eventKey;
 
-      showPreResult(
-        current.draw
-      );
+      animationToken++;
 
+      clearTimeout(fadeTimer1);
+      clearTimeout(fadeTimer2);
+      clearTimeout(fadeTimer3);
+      clearTimeout(fadeTimer4);
+
+      stopResultJump();
+
+
+      const finalResult =
+        getDrawResult(
+          activeDraw.name
+        );
+
+
+      numberElement.textContent =
+        finalResult || "--";
+
+      numberElement.style.opacity =
+        "1";
+
+      numberElement.style.transform =
+        "translateY(0)";
     }
 
     return;
@@ -2794,47 +3202,21 @@ function checkResult() {
 
 
   /* =========================
-     RESULT FIXED
-     Draw time → 1 minute
+     RANDOM
+     00 / 07 / 14 / 21 / 28 / 35
   ========================= */
-
-  if (
-    current &&
-    current.state === "fixed"
-  ) {
-
-    if (
-      currentReveal !==
-      current.draw.name + "_fixed"
-    ) {
-
-      currentReveal =
-        current.draw.name + "_fixed";
-
-      showFinalResult(
-        current.draw
-      );
-
-    }
-
-    return;
-  }
-
 
   /* =========================
-     7:00 AM မတိုင်ခင်
-     Random မလုပ်
-  ========================= */
+   FIREBASE SHARED RANDOM
+   7 SECOND SLOT
+========================= */
 
-  const sevenAM =
-    7 * 3600;
+/* =========================
+   FIREBASE SHARED RANDOM
+   SERVER TIME - 7 SECOND SLOT
+========================= */
 
-  if (currentSeconds < sevenAM) {
-
-  stopResultJump();
-
-  currentReveal =
-    "WAITING_FOR_7AM";
+if (!window.serverTimeReady) {
 
   numberElement.textContent = "--";
 
@@ -2842,38 +3224,136 @@ function checkResult() {
 }
 
 
-  /* =========================
-     NORMAL RANDOM
-     7:00 AM → 8:59:45 PM
-  ========================= */
-
-  
-
-  currentReveal = "";
-
-  updateTimeCards();
+/*
+  Firebase Server Time
+*/
+const serverMs =
+  Date.now() +
+  Number(window.serverTimeOffset || 0);
 
 
-  const currentRandomSlot =
-  get7SecondSlot();
+/*
+  Myanmar Time = UTC + 6:30
+*/
+const myanmarMs =
+  serverMs +
+  (6 * 60 + 30) * 60 * 1000;
+
+const serverDate =
+  new Date(myanmarMs);
+
+
+/*
+  Myanmar Date / Time
+*/
+const serverYear =
+  serverDate.getUTCFullYear();
+
+const serverMonth =
+  serverDate.getUTCMonth() + 1;
+
+const serverDay =
+  serverDate.getUTCDate();
+
+const serverHours =
+  serverDate.getUTCHours();
+
+const serverMinutes =
+  serverDate.getUTCMinutes();
+
+const serverSeconds =
+  serverDate.getUTCSeconds();
+
+
+const pad =
+  n => String(n).padStart(2, "0");
+
+
+/*
+  7 Second Slot
+
+  00 - 06 = 0
+  07 - 13 = 1
+  14 - 20 = 2
+  21 - 27 = 3
+  28 - 34 = 4
+  35 - 41 = 5
+  42 - 48 = 6
+  49 - 55 = 7
+  56 - 59 = 8
+*/
+const slot =
+  Math.floor(serverSeconds / 7);
+
+
+/*
+  Local browser အချိန်မသုံးတော့ဘူး
+  Firebase Server Time ကိုပဲသုံးမယ်
+*/
+const eventKey =
+  `${serverYear}-${pad(serverMonth)}-${pad(serverDay)}_${pad(serverHours)}_${pad(serverMinutes)}_R${slot}`;
 
 
 if (
-  currentRandomSlot !==
-  lastRandomAnimation
+  randomSlotKey !== eventKey
 ) {
 
-  lastRandomAnimation =
-    currentRandomSlot;
+  randomSlotKey =
+    eventKey;
 
-  animateRandom();
+
+  /*
+    Firebase path
+    ဖုန်းအားလုံး တစ်နေရာတည်း
+  */
+  const firebaseSlotKey =
+    `${serverYear}-${pad(serverMonth)}-${pad(serverDay)}/${pad(serverHours)}/${pad(serverMinutes)}/${slot}`;
+
+
+  window.getFirebaseRandomNumber(
+    firebaseSlotKey
+  ).then(value => {
+
+
+    /*
+      Slot ပြောင်းသွားရင်
+      အဟောင်း result မပြ
+    */
+    if (
+      randomSlotKey !== eventKey
+    ) {
+      return;
+    }
+
+
+    if (
+      value === "--"
+    ) {
+
+      numberElement.textContent =
+        "--";
+
+      return;
+    }
+
+
+    randomSlotValue =
+      value;
+
+
+    animateRandomNumber(
+      randomSlotValue
+    );
+
+  });
 
 }
-}
 
+return;
+}
 
 /* =========================
-   START RESULT SYSTEM
+   START  SYSTEM
 ========================= */
 
 numberElement.textContent =
@@ -4136,44 +4616,71 @@ function getCurrentDateTime() {
 
 function get7SecondUpdateTime() {
 
-  const slot =
-    get7SecondSlot();
+  /*
+    MAIN NUMBER နဲ့
+    အတိအကျ SAME SERVER TIME သုံးမယ်
+  */
 
-  const slotStart =
-    slot * 7000;
+  const serverMs =
+    Date.now() +
+    Number(window.serverTimeOffset || 0);
 
-  const d =
-    new Date(
-      slotStart +
-      (6 * 60 + 30) * 60 * 1000
-    );
+  /*
+    Myanmar Time = UTC + 6:30
+  */
+  const myanmarMs =
+    serverMs +
+    (6 * 60 + 30) * 60 * 1000;
 
-  const pad = n =>
-    String(n).padStart(2, "0");
+  const now =
+    new Date(myanmarMs);
+
+
+  const pad =
+    n => String(n).padStart(2, "0");
+
 
   const year =
-    d.getUTCFullYear();
+    now.getUTCFullYear();
 
   const month =
-    pad(d.getUTCMonth() + 1);
+    pad(now.getUTCMonth() + 1);
 
   const day =
-    pad(d.getUTCDate());
+    pad(now.getUTCDate());
+
 
   let hours =
-    d.getUTCHours();
+    now.getUTCHours();
 
   const minutes =
-    pad(d.getUTCMinutes());
+    pad(now.getUTCMinutes());
+
+
+  /*
+    MAIN NUMBER နဲ့
+    EXACT SAME 7 SECOND SLOT
+  */
+
+  const slot =
+    Math.floor(
+      now.getUTCSeconds() / 7
+    );
+
 
   const seconds =
-    pad(d.getUTCSeconds());
+    pad(slot * 7);
+
 
   const ampm =
-    hours >= 12 ? "PM" : "AM";
+    hours >= 12
+      ? "PM"
+      : "AM";
+
 
   hours =
     hours % 12 || 12;
+
 
   return `${year}-${month}-${day} ${pad(hours)}:${minutes}:${seconds} ${ampm}`;
 }
@@ -4187,10 +4694,8 @@ function updateTime() {
   const current =
     getCurrentDraw();
 
-
-  /* =========================
-     11:00 ထိုးပြီးနောက်မှ ✓ ပြ
-  ========================= */
+  const timeText =
+    get7SecondUpdateTime();
 
   if (
     current &&
@@ -4202,20 +4707,15 @@ function updateTime() {
         color:#22c55e;
         font-weight:700;
         margin-right:5px;
-      ">✓</span>Update : ${get7SecondUpdateTime()}`;
+      ">✓</span>Update : ${timeText}`;
 
-    return;
+  } else {
+
+    updated.textContent =
+      `Update : ${timeText}`;
+
   }
-
-
-  /* =========================
-     Result မထိုးခင် ပုံမှန် Update
-  ========================= */
-
-  updated.textContent =
-    `Update : ${get7SecondUpdateTime()}`;
 }
-
 
 updateTime();
 
@@ -4235,7 +4735,8 @@ import {
   ref,
   onValue,
   set,
-  get
+  get,
+  runTransaction
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
 
@@ -4256,6 +4757,52 @@ const app =
 
 const db =
   getDatabase(app);
+window.getFirebaseRandomNumber = async function(slotKey) {
+
+  const randomRef =
+    ref(db, "randomSlots/" + slotKey);
+
+  try {
+
+    const result = await runTransaction(
+      randomRef,
+      (currentValue) => {
+
+        // Firebase မှာ ရှိပြီးသားဆို
+        // ဘာမှမပြောင်းဘဲ အဲဒီတန်ဖိုးကိုပဲသုံး
+        if (currentValue !== null) {
+          return currentValue;
+        }
+
+        // မရှိသေးရင် တစ်ခါပဲ Random ဖန်တီး
+        return String(
+          Math.floor(Math.random() * 100)
+        ).padStart(2, "0");
+      }
+    );
+
+    if (
+      result.committed &&
+      result.snapshot.exists()
+    ) {
+
+      return String(
+        result.snapshot.val()
+      ).padStart(2, "0");
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Firebase Random Error:",
+      error
+    );
+
+  }
+
+  return "--";
+};
 /* =========================
    FIREBASE THAI 3D HISTORY
 ========================= */
@@ -4474,7 +5021,7 @@ onValue(serverTimeRef, (snapshot) => {
 
   window.serverTimeOffset =
     snapshot.val() || 0;
-
+window.serverTimeReady = true;
   if (
     typeof checkResult === "function"
   ) {
@@ -4880,19 +5427,10 @@ function displayDubai3DHistory(data) {
       String(data[dateKey])
         .padStart(3, "0");
 
-    /* =========================
-       ရှိပြီးသား CARD ရှာ
-    ========================= */
-
     let card =
       container.querySelector(
         `.history-card[data-history-date="${dateKey}"]`
       );
-
-
-    /* =========================
-       မရှိသေးရင် တစ်ခါပဲ CREATE
-    ========================= */
 
     if (!card) {
 
@@ -4917,21 +5455,41 @@ function displayDubai3DHistory(data) {
         </div>
       `;
 
-      /*
-        အသစ်ဝင်လာတဲ့ card ကို
-        အပေါ်ဆုံးမှာ တစ်ခါပဲ ထည့်
-      */
-      container.insertBefore(
-        card,
-        container.firstChild
-      );
+      const existingCards =
+        container.querySelectorAll(
+          ".history-card"
+        );
+
+      let inserted = false;
+
+      for (const existingCard of existingCards) {
+
+        const existingDate =
+          existingCard.dataset.historyDate;
+
+        if (
+          existingDate &&
+          dateKey > existingDate
+        ) {
+
+          container.insertBefore(
+            card,
+            existingCard
+          );
+
+          inserted = true;
+
+          break;
+        }
+      }
+
+      if (!inserted) {
+
+        container.appendChild(card);
+
+      }
+
     }
-
-
-    /* =========================
-       RESULT UPDATE
-       Card ကို မဖျက်
-    ========================= */
 
     const resultElement =
       card.querySelector(
@@ -4948,7 +5506,6 @@ function displayDubai3DHistory(data) {
   });
 
 }
-
 </script>
 <!-- =========================
      THAI 3D HISTORY
