@@ -26,7 +26,6 @@ body {
 body {
   overflow-x: hidden;
 }
-
 /* =========================
    HEADER
 ========================= */
@@ -1680,9 +1679,10 @@ body {
   font-size: calc(24px * var(--ui-scale)) !important;
 }
 </style>
+
+
   
 </head>
-
 
 <body>
 
@@ -5506,6 +5506,56 @@ function displayDubai3DHistory(data) {
   });
 
 }
+
+/* =========================
+   RESPONSIVE UI SCALE
+   REFERENCE WIDTH = 411px
+========================= */
+
+function updateUIScale() {
+
+  const baseWidth = 411;
+
+  let scale =
+    window.innerWidth / baseWidth;
+
+  /*
+    အရမ်းသေး/ကြီးသွားတာကို
+    ကန့်သတ်ထားမယ်
+  */
+
+  scale =
+    Math.max(0.82, Math.min(1.18, scale));
+
+  document.documentElement.style
+    .setProperty(
+      "--ui-scale",
+      scale.toFixed(4)
+    );
+}
+
+
+/* စဝင်တဲ့အချိန် */
+updateUIScale();
+
+
+/* ဖုန်းအကျယ်ပြောင်းရင် */
+window.addEventListener(
+  "resize",
+  updateUIScale
+);
+
+
+/* Screen orientation ပြောင်းရင် */
+window.addEventListener(
+  "orientationchange",
+  () => {
+    setTimeout(
+      updateUIScale,
+      100
+    );
+  }
+);
 </script>
 <!-- =========================
      THAI 3D HISTORY
