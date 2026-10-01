@@ -25,6 +25,7 @@ body {
 
 body {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 /* =========================
    HEADER
@@ -1677,6 +1678,26 @@ body {
 
 #dubaiHistory .history-bottom strong {
   font-size: calc(24px * var(--ui-scale)) !important;
+}
+@media (max-height: 700px) {
+
+  .container {
+    padding-top: calc(20px * var(--ui-scale));
+    padding-bottom: 0;
+  }
+
+  .hero {
+    min-height: calc(180px * var(--ui-scale));
+  }
+
+  .container > .time-grid {
+    margin-top: calc(-35px * var(--ui-scale));
+  }
+
+  .menu-grid {
+    margin-top: calc(18px * var(--ui-scale));
+  }
+
 }
 </style>
 
