@@ -1737,6 +1737,39 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: auto;
 }
+/* =========================
+   UPDATE CHECK MARK
+========================= */
+
+.update-check {
+  display: inline-flex;
+
+  width: 27px;
+  height: 27px;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 7px;
+
+  vertical-align: -5px;
+}
+
+.update-check svg {
+  width: 27px;
+  height: 27px;
+
+  display: block;
+
+  fill: none;
+
+  stroke: #22c55e;
+
+  stroke-width: 3;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 </style>
 
 
@@ -4765,12 +4798,11 @@ function updateTime() {
   ) {
 
     updated.innerHTML =
-      `<span style="
-        color:#22c55e;
-        font-weight:700;
-        margin-right:5px;
-      ">✓</span>Update : ${timeText}`;
-
+  `<span class="update-check">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 12.5L9.5 17L19 7"/>
+    </svg>
+  </span>Update : ${timeText}`;
   } else {
 
     updated.textContent =
@@ -5595,4 +5627,4 @@ function displayDubai3DHistory(data) {
 
 </section>
 </body>
-        </html>
+  </html>
